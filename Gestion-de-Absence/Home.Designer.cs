@@ -28,101 +28,112 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnModifier = new System.Windows.Forms.Button();
+            this.cbGroupe = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lsPresence = new System.Windows.Forms.ListBox();
+            this.lsAbsence = new System.Windows.Forms.ListBox();
+            this.dgvEmploiGroupe = new System.Windows.Forms.DataGridView();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiGroupe)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnModifier
             // 
-            this.button1.Location = new System.Drawing.Point(35, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 27);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnModifier.Location = new System.Drawing.Point(47, 32);
+            this.btnModifier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModifier.Name = "btnModifier";
+            this.btnModifier.Size = new System.Drawing.Size(161, 33);
+            this.btnModifier.TabIndex = 0;
+            this.btnModifier.Text = "button1";
+            this.btnModifier.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cbGroupe
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(35, 59);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cbGroupe.FormattingEnabled = true;
+            this.cbGroupe.Location = new System.Drawing.Point(47, 73);
+            this.cbGroupe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbGroupe.Name = "cbGroupe";
+            this.cbGroupe.Size = new System.Drawing.Size(160, 24);
+            this.cbGroupe.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(634, 9);
+            this.label1.Location = new System.Drawing.Point(845, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
-            // listBox1
+            // lsPresence
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(21, 244);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(275, 277);
-            this.listBox1.TabIndex = 3;
+            this.lsPresence.FormattingEnabled = true;
+            this.lsPresence.ItemHeight = 16;
+            this.lsPresence.Location = new System.Drawing.Point(28, 300);
+            this.lsPresence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lsPresence.Name = "lsPresence";
+            this.lsPresence.Size = new System.Drawing.Size(365, 340);
+            this.lsPresence.TabIndex = 3;
             // 
-            // listBox2
+            // lsAbsence
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(383, 244);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(286, 277);
-            this.listBox2.TabIndex = 3;
+            this.lsAbsence.FormattingEnabled = true;
+            this.lsAbsence.ItemHeight = 16;
+            this.lsAbsence.Location = new System.Drawing.Point(511, 300);
+            this.lsAbsence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lsAbsence.Name = "lsAbsence";
+            this.lsAbsence.Size = new System.Drawing.Size(380, 340);
+            this.lsAbsence.TabIndex = 3;
             // 
-            // dataGridView1
+            // dgvEmploiGroupe
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(21, 88);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(648, 150);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvEmploiGroupe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmploiGroupe.Location = new System.Drawing.Point(28, 108);
+            this.dgvEmploiGroupe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEmploiGroupe.Name = "dgvEmploiGroupe";
+            this.dgvEmploiGroupe.Size = new System.Drawing.Size(864, 185);
+            this.dgvEmploiGroupe.TabIndex = 4;
             // 
-            // button2
+            // btnNext
             // 
-            this.button2.Location = new System.Drawing.Point(302, 244);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnNext.Location = new System.Drawing.Point(403, 300);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(100, 28);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = "button2";
+            this.btnNext.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnPrevious
             // 
-            this.button3.Location = new System.Drawing.Point(302, 498);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "button2";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnPrevious.Location = new System.Drawing.Point(403, 613);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(100, 28);
+            this.btnPrevious.TabIndex = 5;
+            this.btnPrevious.Text = "button2";
+            this.btnPrevious.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 533);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(911, 656);
+            this.Controls.Add(this.btnPrevious);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.dgvEmploiGroupe);
+            this.Controls.Add(this.lsAbsence);
+            this.Controls.Add(this.lsPresence);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cbGroupe);
+            this.Controls.Add(this.btnModifier);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Home";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiGroupe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,14 +141,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnModifier;
+        private System.Windows.Forms.ComboBox cbGroupe;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListBox lsPresence;
+        private System.Windows.Forms.ListBox lsAbsence;
+        private System.Windows.Forms.DataGridView dgvEmploiGroupe;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Button btnPrevious;
     }
 }
 
