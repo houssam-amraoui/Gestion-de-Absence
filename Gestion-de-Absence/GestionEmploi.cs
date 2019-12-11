@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Gestion_de_Absence
 {
-    public partial class Form1 : Form
+    public partial class GestionEmploi : Form
     {
-        public Form1()
+        public GestionEmploi()
         {
             InitializeComponent();
         }
