@@ -30,6 +30,18 @@ alter table jour add constraint pk_jour primary key (idjour);
 alter table Eregestrement add constraint pk_Eregestrement primary key (ideregestrement);
 
 
-alter table Stagiaire add constraint fk_stagiaireGroupe foreign key (idgroupe) references Groupe(idgroupe);
+alter table Stagiaire add constraint fk_stagiaireGroupe foreign key (idgroupe) references Groupe(idgroupe) on delete cascade;
 alter table jour add constraint fk_JourGroupe foreign key (idgroupe) references Groupe(idgroupe);
 alter table Eregestrement add constraint fk_Eregestrementjour foreign key (idjour) references jour(idjour);
+
+
+
+insert into groupe values('TDI102'),
+						('TDI202'),
+						('TDI201'),
+						('TDI101');
+insert into stagiaire values(1,'name1','L55471',1),
+							(2,'name2','L55482',2),
+							(3,'name3','L55493',3),
+							(4,'name4','L55501',4),
+							(5,'name5','L55512',2);
