@@ -78,5 +78,84 @@ namespace Gestion_de_Absence
                 pnGValidation.Visible = false;
             }
         }
+
+        private void btnSAjouter_Click(object sender, EventArgs e)
+        {
+            bs.AddNew();
+            pnSZoneText.Enabled = true;
+            pnSNavigation.Enabled = false;
+            pnSModification.Visible = false;
+            pnSValidation.Visible = true;
+        }
+
+        private void btnSSupprimer_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("voulez-vous supprimer ce groupe", "Supprission", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                bs.RemoveCurrent();
+            }
+        }
+
+        private void btnSAnnuler_Click(object sender, EventArgs e)
+        {
+            bs.CancelEdit();
+            pnSModification.Visible = true;
+            pnSZoneText.Enabled = false;
+            pnSValidation.Visible = false;
+            pnSNavigation.Enabled = true;
+        }
+
+        private void btnSModifier_Click(object sender, EventArgs e)
+        {
+            pnSZoneText.Enabled = true;
+            pnSModification.Visible = false;
+            pnSValidation.Visible = true;
+            pnSNavigation.Enabled = false;
+        }
+
+        private void btnSValider_Click(object sender, EventArgs e)
+        {
+            if (txtIdStagiaire.Text.Equals("") || txtNum.Text.Equals("") || txtNom.Text.Equals("") || txtCin.Text.Equals(""))
+            {
+                MessageBox.Show("Veuillez remplir les champs", "Champ vide", MessageBoxButtons.OK);
+            }
+            else
+            {
+                bs.EndEdit();
+                pnSModification.Visible = true;
+                pnSZoneText.Enabled = false;
+                pnSValidation.Visible = false;
+            }
+        }
+
+        private void btnSLast_Click(object sender, EventArgs e)
+        {
+            bs.MoveLast();
+        }
+
+        private void btnSPrevious_Click(object sender, EventArgs e)
+        {
+            bs.MovePrevious();
+        }
+
+        private void btnSNext_Click(object sender, EventArgs e)
+        {
+            bs.MoveNext();
+        }
+
+        private void btnSFirst_Click(object sender, EventArgs e)
+        {
+            bs.MoveFirst();
+        }
+
+        private void btnSChercher_Click(object sender, EventArgs e)
+        {
+            bs.Filter = "name like '%" + txtChercher.Text + "%'";
+        }
+
+        private void txtChercher_TextChanged(object sender, EventArgs e)
+        {
+            btnSChercher.PerformClick();
+        }
     }
     }

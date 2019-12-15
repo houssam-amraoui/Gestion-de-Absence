@@ -62,9 +62,9 @@
             this.txtIDgroupe = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pnSZoneText = new System.Windows.Forms.Panel();
-            this.pnSValidation = new System.Windows.Forms.Panel();
-            this.txtIdStagiaire = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtIdStagiaire = new System.Windows.Forms.TextBox();
+            this.pnSValidation = new System.Windows.Forms.Panel();
             this.pnSNavigation.SuspendLayout();
             this.pnGValidation.SuspendLayout();
             this.pnGModification.SuspendLayout();
@@ -152,6 +152,7 @@
             this.txtChercher.Name = "txtChercher";
             this.txtChercher.Size = new System.Drawing.Size(240, 22);
             this.txtChercher.TabIndex = 4;
+            this.txtChercher.TextChanged += new System.EventHandler(this.txtChercher_TextChanged);
             // 
             // btnSChercher
             // 
@@ -162,6 +163,7 @@
             this.btnSChercher.TabIndex = 1;
             this.btnSChercher.Text = "Chercher";
             this.btnSChercher.UseVisualStyleBackColor = true;
+            this.btnSChercher.Click += new System.EventHandler(this.btnSChercher_Click);
             // 
             // txtNum
             // 
@@ -196,6 +198,7 @@
             this.btnSAjouter.TabIndex = 1;
             this.btnSAjouter.Text = "Ajouter";
             this.btnSAjouter.UseVisualStyleBackColor = true;
+            this.btnSAjouter.Click += new System.EventHandler(this.btnSAjouter_Click);
             // 
             // btnSModifier
             // 
@@ -206,6 +209,7 @@
             this.btnSModifier.TabIndex = 1;
             this.btnSModifier.Text = "Modifier";
             this.btnSModifier.UseVisualStyleBackColor = true;
+            this.btnSModifier.Click += new System.EventHandler(this.btnSModifier_Click);
             // 
             // btnSSupprimer
             // 
@@ -216,6 +220,7 @@
             this.btnSSupprimer.TabIndex = 1;
             this.btnSSupprimer.Text = "Supprimer";
             this.btnSSupprimer.UseVisualStyleBackColor = true;
+            this.btnSSupprimer.Click += new System.EventHandler(this.btnSSupprimer_Click);
             // 
             // btnGAnnuler
             // 
@@ -237,6 +242,7 @@
             this.btnSAnnuler.TabIndex = 1;
             this.btnSAnnuler.Text = "Annuler";
             this.btnSAnnuler.UseVisualStyleBackColor = true;
+            this.btnSAnnuler.Click += new System.EventHandler(this.btnSAnnuler_Click);
             // 
             // btnSValider
             // 
@@ -247,6 +253,7 @@
             this.btnSValider.TabIndex = 1;
             this.btnSValider.Text = "Valider";
             this.btnSValider.UseVisualStyleBackColor = true;
+            this.btnSValider.Click += new System.EventHandler(this.btnSValider_Click);
             // 
             // label1
             // 
@@ -312,6 +319,7 @@
             this.btnSLast.TabIndex = 5;
             this.btnSLast.Text = ">>";
             this.btnSLast.UseVisualStyleBackColor = true;
+            this.btnSLast.Click += new System.EventHandler(this.btnSLast_Click);
             // 
             // btnSPrevious
             // 
@@ -322,6 +330,7 @@
             this.btnSPrevious.TabIndex = 5;
             this.btnSPrevious.Text = ">";
             this.btnSPrevious.UseVisualStyleBackColor = true;
+            this.btnSPrevious.Click += new System.EventHandler(this.btnSPrevious_Click);
             // 
             // btnSNext
             // 
@@ -332,6 +341,7 @@
             this.btnSNext.TabIndex = 5;
             this.btnSNext.Text = "<";
             this.btnSNext.UseVisualStyleBackColor = true;
+            this.btnSNext.Click += new System.EventHandler(this.btnSNext_Click);
             // 
             // btnSFirst
             // 
@@ -342,6 +352,7 @@
             this.btnSFirst.TabIndex = 5;
             this.btnSFirst.Text = "<<";
             this.btnSFirst.UseVisualStyleBackColor = true;
+            this.btnSFirst.Click += new System.EventHandler(this.btnSFirst_Click);
             // 
             // pnGValidation
             // 
@@ -422,6 +433,22 @@
             this.pnSZoneText.Size = new System.Drawing.Size(312, 186);
             this.pnSZoneText.TabIndex = 14;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(35, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(75, 17);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "IdStagiaire";
+            // 
+            // txtIdStagiaire
+            // 
+            this.txtIdStagiaire.Location = new System.Drawing.Point(133, 23);
+            this.txtIdStagiaire.Name = "txtIdStagiaire";
+            this.txtIdStagiaire.Size = new System.Drawing.Size(160, 22);
+            this.txtIdStagiaire.TabIndex = 9;
+            // 
             // pnSValidation
             // 
             this.pnSValidation.Controls.Add(this.btnSValider);
@@ -432,22 +459,6 @@
             this.pnSValidation.Size = new System.Drawing.Size(315, 66);
             this.pnSValidation.TabIndex = 15;
             this.pnSValidation.Visible = false;
-            // 
-            // txtIdStagiaire
-            // 
-            this.txtIdStagiaire.Location = new System.Drawing.Point(133, 23);
-            this.txtIdStagiaire.Name = "txtIdStagiaire";
-            this.txtIdStagiaire.Size = new System.Drawing.Size(160, 22);
-            this.txtIdStagiaire.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 17);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "IdStagiaire";
             // 
             // Stagiaire
             // 
