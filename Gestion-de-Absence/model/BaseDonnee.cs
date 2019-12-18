@@ -11,7 +11,7 @@ namespace Gestion_de_Absence.model
 {
    static class BaseDonnee
     {
-       static SqlConnection connection = new SqlConnection();
+      public static SqlConnection connection = new SqlConnection();
         static DataSet dataset = new DataSet();
 
         public static void ouvrirConnection()
@@ -31,7 +31,6 @@ namespace Gestion_de_Absence.model
             ouvrirConnection();
             SqlDataAdapter dataAdapte = new SqlDataAdapter("select * from " + t, connection);
             if (!dataset.Tables.Contains(t)) dataAdapte.Fill(dataset,t);
-
             dataAdapte = null;
         }
         public static BindingSource RemplirListControl(ListControl l,string t,string dm,string vm)
@@ -76,6 +75,23 @@ namespace Gestion_de_Absence.model
 
             return bs;
 
+        }
+        static public void syncroniser(string t)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select * from " + t, connection);
+            SqlCommandBuilder cb = new SqlCommandBuilder(da);
+            da.Update(dataset.Tables[t]);
+            da = null;
+            cb = null;
+        }
+      static public void exec(string sql)
+        {
+            model.BaseDonnee.ouvrirConnection();
+            // MessageBox.Show(sql);
+            SqlCommand com = new SqlCommand(sql, model.BaseDonnee.connection);
+            com.ExecuteNonQuery();
+            com = null;
+            model.BaseDonnee.fermerConnectio();
         }
     }
 }

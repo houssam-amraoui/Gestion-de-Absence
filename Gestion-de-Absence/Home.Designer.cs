@@ -42,18 +42,19 @@
             // btnModifier
             // 
             this.btnModifier.Location = new System.Drawing.Point(47, 32);
-            this.btnModifier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModifier.Margin = new System.Windows.Forms.Padding(4);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(161, 33);
             this.btnModifier.TabIndex = 0;
-            this.btnModifier.Text = "button1";
+            this.btnModifier.Text = "Modifer";
             this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // cbGroupe
             // 
             this.cbGroupe.FormattingEnabled = true;
             this.cbGroupe.Location = new System.Drawing.Point(47, 73);
-            this.cbGroupe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbGroupe.Margin = new System.Windows.Forms.Padding(4);
             this.cbGroupe.Name = "cbGroupe";
             this.cbGroupe.Size = new System.Drawing.Size(160, 24);
             this.cbGroupe.TabIndex = 1;
@@ -73,7 +74,7 @@
             this.lsPresence.FormattingEnabled = true;
             this.lsPresence.ItemHeight = 16;
             this.lsPresence.Location = new System.Drawing.Point(28, 300);
-            this.lsPresence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lsPresence.Margin = new System.Windows.Forms.Padding(4);
             this.lsPresence.Name = "lsPresence";
             this.lsPresence.Size = new System.Drawing.Size(365, 340);
             this.lsPresence.TabIndex = 3;
@@ -83,7 +84,7 @@
             this.lsAbsence.FormattingEnabled = true;
             this.lsAbsence.ItemHeight = 16;
             this.lsAbsence.Location = new System.Drawing.Point(511, 300);
-            this.lsAbsence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lsAbsence.Margin = new System.Windows.Forms.Padding(4);
             this.lsAbsence.Name = "lsAbsence";
             this.lsAbsence.Size = new System.Drawing.Size(380, 340);
             this.lsAbsence.TabIndex = 3;
@@ -92,7 +93,7 @@
             // 
             this.dgvEmploiGroupe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmploiGroupe.Location = new System.Drawing.Point(28, 108);
-            this.dgvEmploiGroupe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEmploiGroupe.Margin = new System.Windows.Forms.Padding(4);
             this.dgvEmploiGroupe.Name = "dgvEmploiGroupe";
             this.dgvEmploiGroupe.Size = new System.Drawing.Size(864, 185);
             this.dgvEmploiGroupe.TabIndex = 4;
@@ -100,7 +101,7 @@
             // btnNext
             // 
             this.btnNext.Location = new System.Drawing.Point(403, 300);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(100, 28);
             this.btnNext.TabIndex = 5;
@@ -110,7 +111,7 @@
             // btnPrevious
             // 
             this.btnPrevious.Location = new System.Drawing.Point(403, 613);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPrevious.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(100, 28);
             this.btnPrevious.TabIndex = 5;
@@ -130,9 +131,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbGroupe);
             this.Controls.Add(this.btnModifier);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Home";
-            this.Text = "Form1";
+            this.Text = "Home";
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiGroupe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

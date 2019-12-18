@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Gestion_de_Absence
 {
@@ -13,6 +14,9 @@ namespace Gestion_de_Absence
     {
         BindingSource bs;
         BindingSource bs2;
+        int conteur = -1;
+        int conteur2 = -1;
+        string sql;
         public Stagiaire()
         {
             InitializeComponent();
@@ -31,27 +35,37 @@ namespace Gestion_de_Absence
         }
 
         private void btnGAjouter_Click(object sender, EventArgs e)
-        {
+        { 
             bs2.AddNew();
+            sql = "insert into Groupe (nomgroupe) values ('";
             pnGModification.Visible = false;
             pnGValidation.Visible = true;
-            pnGroupe.Visible = true;
+            pnGroupe.Enabled = true;
             pnSNavigation.Enabled = false;
+            txtIDgroupe.Text =conteur+"";
+           
         }
 
         private void btnGModifier_Click(object sender, EventArgs e)
         {
-            pnGroupe.Visible = true;
-            pnGModification.Visible = false;
-            pnGValidation.Visible = true;
-            pnSNavigation.Enabled = false;
+             pnGroupe.Enabled = true;
+             pnGModification.Visible = false;
+             pnGValidation.Visible = true;
+             pnSNavigation.Enabled = false;
+            //Correction de la recette
+            sql = "Update  Groupe set nomgroupe = '";
         }
 
         private void btnGSupprimer_Click(object sender, EventArgs e)
         {
             if(MessageBox.Show("voulez-vous supprimer ce groupe", "Supprission", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                bs2.RemoveCurrent();
+                
+               bs2.RemoveCurrent();
+                model.BaseDonnee.syncroniser("Groupe");
+               
+
+
             }
         }
 
@@ -73,9 +87,15 @@ namespace Gestion_de_Absence
             else
             {
                 bs2.EndEdit();
+               // MessageBox.Show(sql + txtGroupe.Text + "' where idgroupe=" + txtIDgroupe.Text);
                 pnGModification.Visible = true;
-                pnGroupe.Visible = false;
+                pnGroupe.Enabled = false;
                 pnGValidation.Visible = false;
+                conteur--;
+               model.BaseDonnee.exec(sql + txtGroupe.Text +"' where idgroupe="+txtIDgroupe.Text);
+                 sql = null;
+                
+                
             }
         }
 
@@ -86,6 +106,8 @@ namespace Gestion_de_Absence
             pnSNavigation.Enabled = false;
             pnSModification.Visible = false;
             pnSValidation.Visible = true;
+            txtIdStagiaire.Text = conteur2 + "";
+           sql= "insert into Stagiaire (numStagiaire, name, cin,idgroupe) values (";
         }
 
         private void btnSSupprimer_Click(object sender, EventArgs e)
@@ -93,6 +115,7 @@ namespace Gestion_de_Absence
             if (MessageBox.Show("voulez-vous supprimer ce groupe", "Supprission", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 bs.RemoveCurrent();
+                model.BaseDonnee.syncroniser("Stagiaire");
             }
         }
 
@@ -111,6 +134,7 @@ namespace Gestion_de_Absence
             pnSModification.Visible = false;
             pnSValidation.Visible = true;
             pnSNavigation.Enabled = false;
+            sql = "Update  Stagiaire set numStagiaire, name, cin,idgroupe = ";
         }
 
         private void btnSValider_Click(object sender, EventArgs e)
@@ -122,9 +146,13 @@ namespace Gestion_de_Absence
             else
             {
                 bs.EndEdit();
+                
                 pnSModification.Visible = true;
                 pnSZoneText.Enabled = false;
                 pnSValidation.Visible = false;
+                pnSNavigation.Enabled = true;
+                conteur2--;
+                model.BaseDonnee.exec(sql + txtNum.Text + ",'" + txtNom.Text.Replace("'", "''") + "','" + txtCin.Text + "'," + txtIDgroupe.Text + "where idstagiaire="+txtIdStagiaire);
             }
         }
 

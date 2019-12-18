@@ -15,5 +15,11 @@ namespace Gestion_de_Absence
         {
             InitializeComponent();
         }
+
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            Stagiaire s = new Stagiaire();
+            s.ShowDialog();
+        }
     }
 }

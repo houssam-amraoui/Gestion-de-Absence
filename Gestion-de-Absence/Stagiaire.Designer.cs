@@ -393,15 +393,16 @@
             this.pnGroupe.Controls.Add(this.label5);
             this.pnGroupe.Controls.Add(this.label4);
             this.pnGroupe.Controls.Add(this.txtGroupe);
+            this.pnGroupe.Enabled = false;
             this.pnGroupe.Location = new System.Drawing.Point(13, 47);
             this.pnGroupe.Margin = new System.Windows.Forms.Padding(4);
             this.pnGroupe.Name = "pnGroupe";
             this.pnGroupe.Size = new System.Drawing.Size(435, 55);
             this.pnGroupe.TabIndex = 13;
-            this.pnGroupe.Visible = false;
             // 
             // txtIDgroupe
             // 
+            this.txtIDgroupe.Enabled = false;
             this.txtIDgroupe.Location = new System.Drawing.Point(32, 19);
             this.txtIDgroupe.Name = "txtIDgroupe";
             this.txtIDgroupe.Size = new System.Drawing.Size(143, 22);
@@ -444,6 +445,7 @@
             // 
             // txtIdStagiaire
             // 
+            this.txtIdStagiaire.Enabled = false;
             this.txtIdStagiaire.Location = new System.Drawing.Point(133, 23);
             this.txtIdStagiaire.Name = "txtIdStagiaire";
             this.txtIdStagiaire.Size = new System.Drawing.Size(160, 22);
@@ -475,6 +477,7 @@
             this.Controls.Add(this.cbGroupe);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Stagiaire";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stagiaire";
             this.Load += new System.EventHandler(this.Stagiaire_Load);
             this.pnSNavigation.ResumeLayout(false);
