@@ -134,7 +134,7 @@ namespace Gestion_de_Absence
             pnSModification.Visible = false;
             pnSValidation.Visible = true;
             pnSNavigation.Enabled = false;
-            sql = "Update  Stagiaire set numStagiaire, name, cin,idgroupe = ";
+            sql = "Update  Stagiaire set numStagiaire = ";
         }
 
         private void btnSValider_Click(object sender, EventArgs e)
@@ -146,13 +146,14 @@ namespace Gestion_de_Absence
             else
             {
                 bs.EndEdit();
-                
+                //MessageBox.Show(sql + txtNum.Text + ", name= '" + txtNom.Text.Replace("'", "''") + "', cin='" + txtCin.Text + "',idgroupe=" + txtIDgroupe.Text + " where idstagiaire=" + txtIdStagiaire.Text);
                 pnSModification.Visible = true;
                 pnSZoneText.Enabled = false;
                 pnSValidation.Visible = false;
                 pnSNavigation.Enabled = true;
                 conteur2--;
-                model.BaseDonnee.exec(sql + txtNum.Text + ",'" + txtNom.Text.Replace("'", "''") + "','" + txtCin.Text + "'," + txtIDgroupe.Text + "where idstagiaire="+txtIdStagiaire);
+                 model.BaseDonnee.exec(sql + txtNum.Text + ", name= '" + txtNom.Text.Replace("'", "''") + "', cin='" + txtCin.Text + "',idgroupe=" + txtIDgroupe.Text + " where idstagiaire="+txtIdStagiaire.Text);
+                sql = null;
             }
         }
 

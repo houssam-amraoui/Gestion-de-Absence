@@ -105,8 +105,9 @@
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(100, 28);
             this.btnNext.TabIndex = 5;
-            this.btnNext.Text = "button2";
+            this.btnNext.Text = ">>";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
@@ -115,7 +116,7 @@
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(100, 28);
             this.btnPrevious.TabIndex = 5;
-            this.btnPrevious.Text = "button2";
+            this.btnPrevious.Text = "<<";
             this.btnPrevious.UseVisualStyleBackColor = true;
             // 
             // Home
@@ -134,6 +135,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Home";
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiGroupe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
