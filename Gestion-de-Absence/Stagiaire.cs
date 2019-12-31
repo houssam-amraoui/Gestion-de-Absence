@@ -17,6 +17,15 @@ namespace Gestion_de_Absence
         int conteur = -1;
         int conteur2 = -1;
         string sql;
+        private bool operation(string op)
+        {
+            if (op == "a")
+            {
+              string  sql = "insert into Stagiaire (numStagiaire, name, cin,idgroupe) values (";
+                return true;
+            }
+            return false;
+        }
         public Stagiaire()
         {
             InitializeComponent();
@@ -24,7 +33,7 @@ namespace Gestion_de_Absence
 
         private void Stagiaire_Load(object sender, EventArgs e)
         {
-            bs2 = model.BaseDonnee.RemplirListControl(cbGroupe, "Groupe", "nomgroupe", "idgroupe");
+            bs2 =model.BaseDonnee.RemplirListControl(cbGroupe, "Groupe", "nomgroupe", "idgroupe");
            bs = model.BaseDonnee.remplirListeRel(lsStagiaire, "Stagiaire", "name", "idstagiaire", "Groupe", "idgroupe", "idgroupe",bs2);
            txtIdStagiaire.DataBindings.Add("text", bs, "idstagiaire");
            txtNum.DataBindings.Add("text", bs, "numStagiaire");
@@ -146,14 +155,20 @@ namespace Gestion_de_Absence
             else
             {
                 bs.EndEdit();
-                //MessageBox.Show(sql + txtNum.Text + ", name= '" + txtNom.Text.Replace("'", "''") + "', cin='" + txtCin.Text + "',idgroupe=" + txtIDgroupe.Text + " where idstagiaire=" + txtIdStagiaire.Text);
+                
                 pnSModification.Visible = true;
                 pnSZoneText.Enabled = false;
                 pnSValidation.Visible = false;
                 pnSNavigation.Enabled = true;
                 conteur2--;
-                 model.BaseDonnee.exec(sql + txtNum.Text + ", name= '" + txtNom.Text.Replace("'", "''") + "', cin='" + txtCin.Text + "',idgroupe=" + txtIDgroupe.Text + " where idstagiaire="+txtIdStagiaire.Text);
-                sql = null;
+                if (!operation("a"))
+                {
+                    model.BaseDonnee.exec(sql + txtNum.Text + ", name= '" + txtNom.Text.Replace("'", "''") + "', cin='" + txtCin.Text + "',idgroupe=" + txtIDgroupe.Text + " where idstagiaire=" + txtIdStagiaire.Text);
+                    sql = null;
+                }
+                else
+                   // MessageBox.Show(sql + txtNum.Text + ",'" + txtNom.Text + "','" + txtCin.Text + "'," + txtIDgroupe.Text + ")");
+                   model.BaseDonnee.exec(sql + txtNum.Text + ",'" + txtNom.Text + "','" + txtCin.Text + "'," + txtIDgroupe.Text + ")");
             }
         }
 

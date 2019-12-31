@@ -30,7 +30,13 @@ namespace Gestion_de_Absence
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            lsAbsence.Items.Add(lsPresence.Text); 
+            lsAbsence.Items.Add(lsPresence.Text);
+            
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            lsPresence.Items.Add(lsAbsence.Text);
         }
     }
 }

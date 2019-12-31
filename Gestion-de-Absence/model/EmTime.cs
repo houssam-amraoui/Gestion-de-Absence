@@ -17,6 +17,11 @@ namespace Gestion_de_Absence.model
         public override string ToString()
         {
             return Hous + ":" + min;
+        
+    }
+        public float getComparTime()
+        {
+            return Hous + (min / 60);
         }
     }
 }

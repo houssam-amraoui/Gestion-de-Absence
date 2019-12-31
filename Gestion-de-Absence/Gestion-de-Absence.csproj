@@ -57,7 +57,7 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\BaseDonnee.cs" />
+    <Compile Include="BaseDonnee.cs" />
     <Compile Include="model\EmTime.cs" />
     <Compile Include="model\Stagiaire.cs" />
     <Compile Include="model\TimeRegistre.cs" />

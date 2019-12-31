@@ -118,6 +118,7 @@
             this.btnPrevious.TabIndex = 5;
             this.btnPrevious.Text = "<<";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // Home
             // 
