@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Gestion_de_Absence.model;
 
 namespace Gestion_de_Absence
 {
@@ -33,8 +34,8 @@ namespace Gestion_de_Absence
 
         private void Stagiaire_Load(object sender, EventArgs e)
         {
-            bs2 =model.BaseDonnee.RemplirListControl(cbGroupe, "Groupe", "nomgroupe", "idgroupe");
-           bs = model.BaseDonnee.remplirListeRel(lsStagiaire, "Stagiaire", "name", "idstagiaire", "Groupe", "idgroupe", "idgroupe",bs2);
+            bs2 =BaseDonnee.RemplirListControl(cbGroupe, "Groupe", "nomgroupe", "idgroupe");
+           bs = BaseDonnee.remplirListeRel(lsStagiaire, "Stagiaire", "name", "idstagiaire", "Groupe", "idgroupe", "idgroupe",bs2);
            txtIdStagiaire.DataBindings.Add("text", bs, "idstagiaire");
            txtNum.DataBindings.Add("text", bs, "numStagiaire");
             txtNom.DataBindings.Add("text", bs, "name");
@@ -101,7 +102,7 @@ namespace Gestion_de_Absence
                 pnGroupe.Enabled = false;
                 pnGValidation.Visible = false;
                 conteur--;
-               model.BaseDonnee.exec(sql + txtGroupe.Text +"' where idgroupe="+txtIDgroupe.Text);
+               BaseDonnee.exec(sql + txtGroupe.Text +"' where idgroupe="+txtIDgroupe.Text);
                  sql = null;
                 
                 
@@ -124,7 +125,7 @@ namespace Gestion_de_Absence
             if (MessageBox.Show("voulez-vous supprimer ce groupe", "Supprission", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 bs.RemoveCurrent();
-                model.BaseDonnee.syncroniser("Stagiaire");
+               BaseDonnee.syncroniser("Stagiaire");
             }
         }
 
@@ -163,12 +164,12 @@ namespace Gestion_de_Absence
                 conteur2--;
                 if (!operation("a"))
                 {
-                    model.BaseDonnee.exec(sql + txtNum.Text + ", name= '" + txtNom.Text.Replace("'", "''") + "', cin='" + txtCin.Text + "',idgroupe=" + txtIDgroupe.Text + " where idstagiaire=" + txtIdStagiaire.Text);
+                    BaseDonnee.exec(sql + txtNum.Text + ", name= '" + txtNom.Text.Replace("'", "''") + "', cin='" + txtCin.Text + "',idgroupe=" + txtIDgroupe.Text + " where idstagiaire=" + txtIdStagiaire.Text);
                     sql = null;
                 }
                 else
                    // MessageBox.Show(sql + txtNum.Text + ",'" + txtNom.Text + "','" + txtCin.Text + "'," + txtIDgroupe.Text + ")");
-                   model.BaseDonnee.exec(sql + txtNum.Text + ",'" + txtNom.Text + "','" + txtCin.Text + "'," + txtIDgroupe.Text + ")");
+                   BaseDonnee.exec(sql + txtNum.Text + ",'" + txtNom.Text + "','" + txtCin.Text + "'," + txtIDgroupe.Text + ")");
             }
         }
 

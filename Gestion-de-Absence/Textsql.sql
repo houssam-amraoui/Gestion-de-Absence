@@ -44,3 +44,6 @@ insert into stagiaire values(1,'name1','L55471',1),
 							(3,'name3','L55493',3),
 							(4,'name4','L55501',4),
 							(5,'name5','L55512',2);
+alter table Eregestrement add Activite varchar(50);
+
+

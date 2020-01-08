@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gestion_de_Absence.model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,8 +20,8 @@ namespace Gestion_de_Absence
         }
           private void Home_Load(object sender, EventArgs e)
           {
-            bs= model.BaseDonnee.RemplirListControl(cbGroupe,"Groupe", "nomgroupe", "idgroupe");
-            bs2 = model.BaseDonnee.remplirListeRel(lsPresence, "Stagiaire", "name", "idstagiaire", "Groupe", "idgroupe", "idgroupe", bs);
+            bs= BaseDonnee.RemplirListControl(cbGroupe,"Groupe", "nomgroupe", "idgroupe");
+            bs2 = BaseDonnee.remplirListeRel(lsPresence, "Stagiaire", "name", "idstagiaire", "Groupe", "idgroupe", "idgroupe", bs);
          }
         private void btnModifier_Click(object sender, EventArgs e)
         {

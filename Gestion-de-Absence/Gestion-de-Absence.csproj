@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDonneeConnecter.cs" />
     <Compile Include="GestionEmploi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,7 +59,7 @@
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseDonnee.cs" />
-    <Compile Include="model\EmTime.cs" />
+    <Compile Include="model\Jour.cs" />
     <Compile Include="model\Stagiaire.cs" />
     <Compile Include="model\TimeRegistre.cs" />
     <Compile Include="Program.cs" />
