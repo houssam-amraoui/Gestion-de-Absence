@@ -27,29 +27,30 @@ namespace Gestion_de_Absence
 
         private void GestionEmploi_Load(object sender, EventArgs e)
         {
+            dgvEmploiTemps.Rows.Add("Lundi");
+            dgvEmploiTemps.Rows.Add("Mardi");
+            dgvEmploiTemps.Rows.Add("Mercredi");
+            dgvEmploiTemps.Rows.Add("Jeudi");
+            dgvEmploiTemps.Rows.Add("Vendredi");
+            dgvEmploiTemps.Rows.Add("Samedi");
 
             foreach (string ss in BaseDonneeConnecter.getGroupes())
             {
                 grop.Items.Add(ss);
             }
             grop.SelectedIndex = 0;
-            /* dgvEmploiTemps.Rows.Add("Lundi");
-             dgvEmploiTemps.Rows.Add("Mardi");
-             dgvEmploiTemps.Rows.Add("Mercredi");
-             dgvEmploiTemps.Rows.Add("Jeudi");
-             dgvEmploiTemps.Rows.Add("Vendredi");
-             dgvEmploiTemps.Rows.Add("Samedi");*/
-
+             
 
 
         }
 
         private void btnEmAjouter_Click(object sender, EventArgs e)
         {
-         //  dgvEmploiTemps.
+            
+
         }
 
-       
+
 
         private void rempli_liste()
         {
@@ -58,13 +59,17 @@ namespace Gestion_de_Absence
 
         public void show_liste()
         {
+            dgvEmploiTemps.Rows.Clear();
+            
             for(int i=0;i<j.Count;i++)
             {
                 Jour jo = j[i];
-                dgvEmploiTemps.Rows.Insert(i,jo.jour);
+               // dgvEmploiTemps.Rows.Insert(i,jo.jour);
                 foreach (TimeRegistre tm in jo.tmr) {
                     dgvEmploiTemps.Rows[i].Cells[tm.timestart].Value = tm.text;
-                        }
+                  
+
+                }
             }
 
         }

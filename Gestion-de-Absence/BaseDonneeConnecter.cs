@@ -53,6 +53,7 @@ namespace Gestion_de_Absence
 
             }
             dr.Close();
+            j.Add(jo);
             return j;
             
         }
@@ -70,6 +71,12 @@ namespace Gestion_de_Absence
             }
             dr.Close();
             return j;
+        }
+
+        public static void addEnregistremment(string grope ,string numjour , string timepiriod , string activit) { 
+
+        }
+        static void creatIdJoureIfNotExiste(string grope, string numjour) {
         }
     }
 }

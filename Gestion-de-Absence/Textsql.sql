@@ -47,3 +47,12 @@ insert into stagiaire values(1,'name1','L55471',1),
 alter table Eregestrement add Activite varchar(50);
 
 
+
+
+
+-- if id jour is existe
+ insert into Eregestrement (timestart , Activite , idjour) values (1,'rahmouni',(select idjour from jour as a where a.jour ='4' and a.idgroupe = (select idgroupe from Groupe where nomgroupe = 'TDI102') ));
+-- add idjourif not existe
+select Count (idjour) from jour as a where a.jour ='4' and a.idgroupe = (select idgroupe from Groupe where nomgroupe = 'TDI102')
+
+insert into jour (jour, idgroupe) values ('4',(select idgroupe from Groupe where nomgroupe = 'TDI102'))
