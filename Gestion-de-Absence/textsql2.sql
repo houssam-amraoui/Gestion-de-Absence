@@ -15,6 +15,7 @@ cin varchar(50),
 
 create table incription(
 idInscription int identity(1,1),
+idstagiaire int,
 idgroupe int,
 annee int,
 constraint pk_incription primary key (idInscription));
@@ -64,6 +65,7 @@ alter table absence add constraint pk_absence primary key (idAbsence);
 alter table Seance add constraint fk_SeanceUsers foreign key (idusers) references users(idusers);
 alter table absence add constraint fk_absenceStagiaire foreign key (idstagiaire) references Stagiaire(idstagiaire);
 alter table absence add constraint fk_absenceSeance foreign key (idSeance) references Seance(idSeance);
+alter table incription add constraint fk_incriptionSragiaire foreign key (idstagiaire) references Stagiaire(idstagiaire);
 --alter table Eregestrement add constraint fk_EregestrementUsers foreign key (idusers) references users(idusers);
 alter table incription add constraint fk_incriptiongroupe foreign key (idgroupe) references Groupe(idgroupe);
 alter table Seance add constraint fk_Seancegroupe foreign key (idgroupe) references Groupe(idgroupe);
