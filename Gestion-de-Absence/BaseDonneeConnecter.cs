@@ -53,6 +53,7 @@ namespace Gestion_de_Absence
 
             }
             dr.Close();
+            j.Add(jo);
             return j;
             
         }
@@ -70,6 +71,29 @@ namespace Gestion_de_Absence
             }
             dr.Close();
             return j;
+        }
+
+        public static void addEnregistremment(string grope ,string numjour , string timepiriod , string activit) {
+            ouvrirconnection();
+            creatIdJoureIfNotExiste(grope, numjour);
+            command.Connection = connection;
+            command.CommandText = "insert into Eregestrement (timestart , Activite , idjour) values ("+timepiriod+",'"+activit+"',(select idjour from jour as a where a.jour ='"+numjour+"' and a.idgroupe = (select idgroupe from Groupe where nomgroupe = '"+grope+"') ))";
+            command.ExecuteNonQuery();
+
+        }
+        static void creatIdJoureIfNotExiste(string grope, string numjour) {
+            ouvrirconnection();
+            command.Connection = connection;
+            command.CommandText = "exec dbo.addIJIFNE " + numjour + " , '" + grope + "'";
+            command.ExecuteNonQuery();
+
+        }
+       public static void deleteEnregestrempent(string grope, string numjour, string timepiriod)
+        {
+            ouvrirconnection();
+            command.Connection = connection;
+            command.CommandText = "delete from Eregestrement where timestart = '"+timepiriod+"'  and idjour = (select idjour from jour as a where a.jour ='"+numjour+"' and a.idgroupe = (select idgroupe from Groupe where nomgroupe = '"+grope+"') )";
+            command.ExecuteNonQuery();
         }
     }
 }

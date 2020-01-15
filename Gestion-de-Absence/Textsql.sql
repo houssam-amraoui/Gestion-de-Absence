@@ -47,3 +47,33 @@ insert into stagiaire values(1,'name1','L55471',1),
 alter table Eregestrement add Activite varchar(50);
 
 
+
+
+
+-- if id jour is existe
+ insert into Eregestrement (timestart , Activite , idjour) values (1,'rahmouni',(select idjour from jour as a where a.jour ='4' and a.idgroupe = (select idgroupe from Groupe where nomgroupe = 'TDI102') ));
+-- add idjourif not existe
+select Count (idjour) from jour as a where a.jour ='4' and a.idgroupe = (select idgroupe from Groupe where nomgroupe = 'TDI102')
+
+insert into jour (jour, idgroupe) values ('4',(select idgroupe from Groupe where nomgroupe = 'TDI102'))
+
+
+go
+create proc addIJIFNE(@idjour int,@groupe varchar(50))
+as
+begin
+declare @j int;
+	select @j= Count (idjour) from jour as a where a.jour =@idjour and a.idgroupe = (select idgroupe from Groupe where nomgroupe =@groupe)
+	if(@j=0)
+		begin
+		insert into jour (jour, idgroupe) values (@idjour,(select idgroupe from Groupe where nomgroupe =@groupe))
+		end
+end
+
+exec dbo.addIJIFNE 4,'TDI102'
+
+
+SELECT jour, e.timestart,e.activite FROM Eregestrement e INNER JOIN jour j ON e.idjour = j.idjour INNER JOIN Groupe g ON j.idgroupe = g.idgroupe WHERE g.nomgroupe = 'TDI102' order by jour,timestart
+
+
+delete from Eregestrement where timestart = '3'  and idjour = (select idjour from jour)

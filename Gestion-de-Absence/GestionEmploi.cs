@@ -14,16 +14,12 @@ namespace Gestion_de_Absence
 {
     public partial class GestionEmploi : Form
     {
-        
-        
-        List<Jour> j = new List<Jour>();
+
         public GestionEmploi()
         {
-            
             InitializeComponent();
-           // BaseDonnee.RemplirListControl(grop, "Groupe", "nomgroupe", "idgroupe");
-
-        }
+            // BaseDonnee.RemplirListControl(grop, "Groupe", "nomgroupe", "idgroupe");
+         }
 
         private void GestionEmploi_Load(object sender, EventArgs e)
         {
@@ -33,48 +29,52 @@ namespace Gestion_de_Absence
                 grop.Items.Add(ss);
             }
             grop.SelectedIndex = 0;
-            /* dgvEmploiTemps.Rows.Add("Lundi");
-             dgvEmploiTemps.Rows.Add("Mardi");
-             dgvEmploiTemps.Rows.Add("Mercredi");
-             dgvEmploiTemps.Rows.Add("Jeudi");
-             dgvEmploiTemps.Rows.Add("Vendredi");
-             dgvEmploiTemps.Rows.Add("Samedi");*/
-
-
-
         }
 
         private void btnEmAjouter_Click(object sender, EventArgs e)
         {
-         //  dgvEmploiTemps.
-        }
-
-       
-
-        private void rempli_liste()
-        {
-            j = BaseDonneeConnecter.getJourFromGroupe(grop.SelectedItem.ToString());
-        }
-
-        public void show_liste()
-        {
-            for(int i=0;i<j.Count;i++)
+            if (cbJour.SelectedIndex == -1 || comboBox1.SelectedIndex == -1 || txtActivite.Text == "")
             {
-                Jour jo = j[i];
-                dgvEmploiTemps.Rows.Insert(i,jo.jour);
-                foreach (TimeRegistre tm in jo.tmr) {
-                    dgvEmploiTemps.Rows[i].Cells[tm.timestart].Value = tm.text;
-                        }
-            }
+                label3.Text = "Vieullez remplir les champs !!";
+                label3.ForeColor = Color.Red;
 
+            }
+            else if (Utils.isVide(cbJour.SelectedIndex, comboBox1.SelectedIndex, dgvEmploiTemps))
+            {
+
+                BaseDonneeConnecter.addEnregistremment(grop.SelectedItem.ToString(), (cbJour.SelectedIndex + 1) + "", (comboBox1.SelectedIndex + 1) + "", txtActivite.Text);
+                grop_SelectedIndexChanged(null, null);
+                txtActivite.Clear();
+                label3.Text = "Ajoutation reussite";
+                label3.ForeColor = Color.Green;
+            }
+            else {
+                label3.Text = "Cette periode est Occupez vieullez selectionez une periode vide ou vider une preriode !!";
+                label3.ForeColor = Color.Red;
+                }
         }
+
 
         private void grop_SelectedIndexChanged(object sender, EventArgs e)
         {
-            rempli_liste();
-            show_liste();
+            Utils.rempli_liste(grop);
+            Utils.show_liste(dgvEmploiTemps);
         }
 
-      
+        private void btn_supr_Click(object sender, EventArgs e)
+        {
+            if (Utils.isVide(cbJour.SelectedIndex, comboBox1.SelectedIndex,dgvEmploiTemps))
+            {
+                label3.Text = "Cette Eregestrement est Deja vide !!";
+                label3.ForeColor = Color.Red;
+            }
+            else
+            {
+                BaseDonneeConnecter.deleteEnregestrempent(grop.SelectedItem.ToString(), (cbJour.SelectedIndex + 1) + "", (comboBox1.SelectedIndex + 1) + "");
+                grop_SelectedIndexChanged(null, null);
+                label3.Text = "Supprission reussite";
+                label3.ForeColor = Color.Green;
+            }
+        }
     }
 }

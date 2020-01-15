@@ -12,32 +12,31 @@ namespace Gestion_de_Absence
 {
     public partial class Home : Form
     {
-        BindingSource bs;
-        BindingSource bs2;
         public Home()
         {
             InitializeComponent();
         }
-          private void Home_Load(object sender, EventArgs e)
-          {
-            bs= BaseDonnee.RemplirListControl(cbGroupe,"Groupe", "nomgroupe", "idgroupe");
-            bs2 = BaseDonnee.remplirListeRel(lsPresence, "Stagiaire", "name", "idstagiaire", "Groupe", "idgroupe", "idgroupe", bs);
-         }
+        private void Home_Load(object sender, EventArgs e)
+        {
+            label1.Text =DateTime.Today.ToString("d");
+            foreach (string ss in BaseDonneeConnecter.getGroupes())
+            {
+                cbGroupe.Items.Add(ss);
+            }
+            cbGroupe.SelectedIndex = 0;
+            
+
+        }
         private void btnModifier_Click(object sender, EventArgs e)
         {
             Stagiaire s = new Stagiaire();
             s.ShowDialog();
         }
 
-        private void btnNext_Click(object sender, EventArgs e)
+        private void cbGroupe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lsAbsence.Items.Add(lsPresence.Text);
-            
-        }
-
-        private void btnPrevious_Click(object sender, EventArgs e)
-        {
-            lsPresence.Items.Add(lsAbsence.Text);
+            Utils.rempli_liste(cbGroupe);
+            Utils.show_liste(dgvEmploiGroupe);        
         }
     }
 }

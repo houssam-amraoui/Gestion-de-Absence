@@ -22,7 +22,7 @@ namespace Gestion_de_Absence
         {
             if (op == "a")
             {
-              string  sql = "insert into Stagiaire (numStagiaire, name, cin,idgroupe) values (";
+             // string  sql = "insert into Stagiaire (numStagiaire, name, cin,idgroupe) values (";
                 return true;
             }
             return false;

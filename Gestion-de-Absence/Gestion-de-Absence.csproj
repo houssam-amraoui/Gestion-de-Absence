@@ -70,6 +70,7 @@
     <Compile Include="Stagiaire.Designer.cs">
       <DependentUpon>Stagiaire.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="GestionEmploi.resx">
       <DependentUpon>GestionEmploi.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +90,7 @@
       <DependentUpon>Stagiaire.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="basedonnee.rar" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
