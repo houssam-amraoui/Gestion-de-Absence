@@ -102,3 +102,5 @@ SELECT jour, e.timestart,e.activite FROM Eregestrement e INNER JOIN jour j ON e.
 
 delete from Eregestrement where timestart = '3'  and idjour = (select idjour from jour)
 
+
+
