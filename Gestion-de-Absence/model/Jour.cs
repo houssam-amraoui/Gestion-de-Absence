@@ -8,7 +8,7 @@ namespace Gestion_de_Absence.model
     public class Jour
     {
        public List<TimeRegistre> tmr = new List<TimeRegistre>();
-        public string jour;
+        public int jour;
         public string groupe;
     }
 }

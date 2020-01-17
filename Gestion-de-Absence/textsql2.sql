@@ -5,7 +5,7 @@ go
 create database gestionAbsencev2;
 go
 use gestionAbsencev2;
-
+go
 create table Stagiaire(
 idstagiaire int identity(1,1),
 numStagiaire int,
@@ -44,13 +44,9 @@ preriorite int)
 create table absence(
 idInscription int,
 idAbsence int identity(1,1),
-idstagiaire int,
 idSeance int,
 date date,
 );
-
-
-
 
 
 
@@ -63,13 +59,8 @@ alter table absence add constraint pk_absence primary key (idAbsence);
 
 
 alter table Seance add constraint fk_SeanceUsers foreign key (idusers) references users(idusers);
-alter table absence add constraint fk_absenceStagiaire foreign key (idstagiaire) references Stagiaire(idstagiaire);
 alter table absence add constraint fk_absenceSeance foreign key (idSeance) references Seance(idSeance);
 alter table incription add constraint fk_incriptionSragiaire foreign key (idstagiaire) references Stagiaire(idstagiaire);
---alter table Eregestrement add constraint fk_EregestrementUsers foreign key (idusers) references users(idusers);
 alter table incription add constraint fk_incriptiongroupe foreign key (idgroupe) references Groupe(idgroupe);
 alter table Seance add constraint fk_Seancegroupe foreign key (idgroupe) references Groupe(idgroupe);
 alter table absence add constraint fk_absenceInscription foreign key (idInscription) references incription(idInscription);
-
-
-

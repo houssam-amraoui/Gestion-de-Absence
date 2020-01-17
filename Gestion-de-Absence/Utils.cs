@@ -18,7 +18,7 @@ namespace Gestion_de_Absence
             j = BaseDonneeConnecter.getJourFromGroupe(l.SelectedItem.ToString());
         }
 
-        public  static void show_liste( DataGridView g)
+        public  static void show_liste(DataGridView g)
         {
 
             claer(g);
@@ -28,9 +28,7 @@ namespace Gestion_de_Absence
                 //dgvEmploiTemps.Rows.Insert(i,tabjour[Convert.ToInt32(jo.jour)-1]);
                 foreach (TimeRegistre tm in jo.tmr)
                 {
-                    g.Rows[Convert.ToInt32(jo.jour) - 1].Cells[tm.timestart].Value = tm.text;
-
-
+                    g.Rows[jo.jour - 1].Cells[tm.timestart].Value = tm.text;
                 }
             }
         }

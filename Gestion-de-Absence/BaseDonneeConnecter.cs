@@ -27,28 +27,26 @@ namespace Gestion_de_Absence
             List<Jour> j = new List<Jour>();
             ouvrirconnection();
             command.Connection = connection;
-            command.CommandText = "SELECT jour, e.timestart,e.activite FROM Eregestrement e INNER JOIN jour j "
-                +"ON e.idjour = j.idjour INNER JOIN Groupe g ON j.idgroupe = g.idgroupe WHERE g.nomgroupe = '"+groupe+ "'"
-                +" order by jour,timestart";
+            command.CommandText = "SELECT s.numjour, s.timestart ,s.activite FROM seance s INNER JOIN Groupe g ON s.idgroupe = g.idgroupe WHERE g.nomgroupe = '"+groupe+"' order by numjour,timestart";
 
             SqlDataReader dr = command.ExecuteReader();
             Jour jo = new Jour();
             while (dr.Read())
             {
-                if (jo.jour == null)
+                if (jo.jour == 0)
                 {
-                    jo.jour = (string)dr["jour"];
+                    jo.jour = (int)dr["numjour"];
                 }
-                  else if (jo.jour!= (string)dr["jour"])
+                  else if (jo.jour!= (int)dr["numjour"])
                 {
                     j.Add(jo);
                     jo = new Jour();
 
-                    jo.jour = (string)dr["jour"];
+                    jo.jour = (int)dr["numjour"];
                 }
                 TimeRegistre tm = new TimeRegistre();
                 tm.text = (string)dr["activite"];
-                tm.timestart =Convert.ToInt32( (string) dr["timestart"]);
+                tm.timestart =(int) dr["timestart"];
                 jo.tmr.Add(tm);
 
             }
@@ -73,26 +71,33 @@ namespace Gestion_de_Absence
             return j;
         }
 
-        public static void addEnregistremment(string grope ,string numjour , string timepiriod , string activit) {
+        public static void addSeance(string grope ,int numjour , int timepiriod , string activite,string nameuser,string numsalle) {
             ouvrirconnection();
-            creatIdJoureIfNotExiste(grope, numjour);
             command.Connection = connection;
-            command.CommandText = "insert into Eregestrement (timestart , Activite , idjour) values ("+timepiriod+",'"+activit+"',(select idjour from jour as a where a.jour ='"+numjour+"' and a.idgroupe = (select idgroupe from Groupe where nomgroupe = '"+grope+"') ))";
+            command.CommandText = "insert into seance (timestart ,numjour,Activite ,salle ,idusers,idgroupe) values (" + timepiriod + "," + numjour + ",'" + activite + "','" + numsalle + "',(select idusers from users where nameusers = '" + nameuser + "') ,(select idgroupe from Groupe where nomgroupe = '" + grope + "'))";
             command.ExecuteNonQuery();
 
         }
-        static void creatIdJoureIfNotExiste(string grope, string numjour) {
+        public static List<Users> getAllUsersinfo() {
+            List<Users> us = new List<Users>();
             ouvrirconnection();
             command.Connection = connection;
-            command.CommandText = "exec dbo.addIJIFNE " + numjour + " , '" + grope + "'";
-            command.ExecuteNonQuery();
+            command.CommandText = "select idusers,nameusers,priorite from users";
+            // add where priorite = 3 to get techer only
+            SqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                us.Add(new Users((int)dr["idusers"], (string)dr["nameusers"], (int)dr["priorite"]));
+            }
+            dr.Close();
+            return us;
 
         }
        public static void deleteEnregestrempent(string grope, string numjour, string timepiriod)
         {
             ouvrirconnection();
             command.Connection = connection;
-            command.CommandText = "delete from Eregestrement where timestart = '"+timepiriod+"'  and idjour = (select idjour from jour as a where a.jour ='"+numjour+"' and a.idgroupe = (select idgroupe from Groupe where nomgroupe = '"+grope+"') )";
+            command.CommandText = "delete s from seance s INNER JOIN Groupe g ON s.idgroupe = g.idgroupe WHERE  timestart = '" + timepiriod + "'  and numjour ='" + numjour + "' and  nomgroupe = '" + grope + "'";
             command.ExecuteNonQuery();
         }
     }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.cbJour = new System.Windows.Forms.ComboBox();
-            this.txtActivite = new System.Windows.Forms.TextBox();
+            this.txtactivite = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEmAjouter = new System.Windows.Forms.Button();
             this.dgvEmploiTemps = new System.Windows.Forms.DataGridView();
@@ -41,10 +41,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbtime = new System.Windows.Forms.ComboBox();
             this.grop = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btn_supr = new System.Windows.Forms.Button();
+            this.cbusers = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtsalle = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiTemps)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,17 +68,17 @@
             this.cbJour.TabIndex = 0;
             this.cbJour.Text = "choose a day";
             // 
-            // txtActivite
+            // txtactivite
             // 
-            this.txtActivite.Location = new System.Drawing.Point(283, 79);
-            this.txtActivite.Name = "txtActivite";
-            this.txtActivite.Size = new System.Drawing.Size(174, 20);
-            this.txtActivite.TabIndex = 1;
+            this.txtactivite.Location = new System.Drawing.Point(283, 64);
+            this.txtactivite.Name = "txtactivite";
+            this.txtactivite.Size = new System.Drawing.Size(174, 20);
+            this.txtactivite.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 79);
+            this.label2.Location = new System.Drawing.Point(20, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 3;
@@ -153,7 +157,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(227, 82);
+            this.label4.Location = new System.Drawing.Point(227, 67);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
@@ -170,20 +174,20 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Jour";
             // 
-            // comboBox1
+            // cbtime
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbtime.FormattingEnabled = true;
+            this.cbtime.Items.AddRange(new object[] {
             "08:30 - 11:00",
             "11:00 - 13:30",
             "13:30 - 16:00",
             "16:00 - 18:30"});
-            this.comboBox1.Location = new System.Drawing.Point(70, 76);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 21);
-            this.comboBox1.TabIndex = 9;
-            this.comboBox1.Text = "choose a time";
+            this.cbtime.Location = new System.Drawing.Point(70, 61);
+            this.cbtime.Margin = new System.Windows.Forms.Padding(2);
+            this.cbtime.Name = "cbtime";
+            this.cbtime.Size = new System.Drawing.Size(104, 21);
+            this.cbtime.TabIndex = 9;
+            this.cbtime.Text = "choose a time";
             // 
             // grop
             // 
@@ -214,21 +218,62 @@
             this.btn_supr.UseVisualStyleBackColor = true;
             this.btn_supr.Click += new System.EventHandler(this.btn_supr_Click);
             // 
+            // cbusers
+            // 
+            this.cbusers.FormattingEnabled = true;
+            this.cbusers.Location = new System.Drawing.Point(581, 61);
+            this.cbusers.Name = "cbusers";
+            this.cbusers.Size = new System.Drawing.Size(99, 21);
+            this.cbusers.TabIndex = 0;
+            this.cbusers.Text = "choose teacher";
+            this.cbusers.SelectedIndexChanged += new System.EventHandler(this.grop_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(534, 63);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Users";
+            // 
+            // txtsalle
+            // 
+            this.txtsalle.Location = new System.Drawing.Point(283, 22);
+            this.txtsalle.Name = "txtsalle";
+            this.txtsalle.Size = new System.Drawing.Size(174, 20);
+            this.txtsalle.TabIndex = 1;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(227, 25);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Salle";
+            // 
             // GestionEmploi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 450);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbtime);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvEmploiTemps);
             this.Controls.Add(this.btn_supr);
             this.Controls.Add(this.btnEmAjouter);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtActivite);
+            this.Controls.Add(this.cbusers);
+            this.Controls.Add(this.txtsalle);
+            this.Controls.Add(this.txtactivite);
             this.Controls.Add(this.grop);
             this.Controls.Add(this.cbJour);
             this.MaximizeBox = false;
@@ -244,14 +289,14 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cbJour;
-        private System.Windows.Forms.TextBox txtActivite;
+        private System.Windows.Forms.TextBox txtactivite;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnEmAjouter;
         private System.Windows.Forms.DataGridView dgvEmploiTemps;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn jour;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -260,5 +305,9 @@
         private System.Windows.Forms.ComboBox grop;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_supr;
+        private System.Windows.Forms.ComboBox cbusers;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtsalle;
+        private System.Windows.Forms.Label label7;
     }
 }
