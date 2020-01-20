@@ -52,6 +52,12 @@
     <Compile Include="GestionEmploi.Designer.cs">
       <DependentUpon>GestionEmploi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Groupe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Groupe.Designer.cs">
+      <DependentUpon>Groupe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="GestionEmploi.resx">
       <DependentUpon>GestionEmploi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Groupe.resx">
+      <DependentUpon>Groupe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

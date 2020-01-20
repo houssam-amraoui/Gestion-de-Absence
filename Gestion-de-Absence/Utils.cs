@@ -53,5 +53,13 @@ namespace Gestion_de_Absence
                 return true;
             }
         }
+
+        public static void activecom(bool v,Panel p1, Panel p2, Panel p3,Panel p4)
+        {
+            p1.Visible = v;
+            p2.Visible = !v;
+            p3.Enabled = v;
+            p4.Enabled = !v;
+        }
     }
 }
