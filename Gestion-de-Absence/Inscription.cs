@@ -14,7 +14,8 @@ namespace Gestion_de_Absence
 {
     public partial class Inscription : Form
     {
-       
+        string sql = null;
+
         DataSet ds = new DataSet();
         SqlCommand comStagiaire = new SqlCommand();
         SqlCommand comGroupe = new SqlCommand();
@@ -82,7 +83,7 @@ namespace Gestion_de_Absence
             bsInscription.DataSource = bsStagiaire;
             bsInscription.DataMember = "fk_Stagiaire_incription";
 
-            
+
 
             lsStagiaire.DataSource = bsStagiaire;
             lsStagiaire.DisplayMember = "name";
@@ -96,7 +97,7 @@ namespace Gestion_de_Absence
             txtName.DataBindings.Add("text", bsStagiaire, "name");
             cbGroupe.DataBindings.Add("selectedvalue", bsInscription, "idgroupe");
             txtAnneScholaire.DataBindings.Add("text", bsInscription, "annee");
-            
+
         }
 
         private void btnStagiaire_Click(object sender, EventArgs e)
@@ -112,16 +113,31 @@ namespace Gestion_de_Absence
         {
             Groupe g = new Groupe();
             g.ShowDialog();
+            Application.Restart();
         }
-        private void btnmodifier_Click(object sender, EventArgs e)
+
+        private void btnAjouter_Click(object sender, EventArgs e)
         {
-            if (txtAnneScholaire.Text.Equals(""))
+            if (cbGroupe.Text.Equals("") || txtAnneScholaire.Text.Equals(""))
             {
+                bsInscription.AddNew();
                 txtAnneScholaire.Text = DateTime.Today.Year + "";
                 Utils.activecom2(true, cbGroupe, pnModification, pnValidation, pnNouveautie, pnNavigation);
+                sql = "insert into incription (idstagiaire,idgroupe,annee) values(";
+
             }
             else
-                Utils.activecom2(true, cbGroupe, pnModification, pnValidation, pnNouveautie, pnNavigation);
+            {
+                MessageBox.Show("Si Vous voulez Modifier vieullez clicker sur le button modifier", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+        }
+
+        private void btnmodifier_Click(object sender, EventArgs e)
+        {
+            Utils.activecom2(true, cbGroupe, pnModification, pnValidation, pnNouveautie, pnNavigation);
+            sql = "update incription set idstagiaire=";
+
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -132,34 +148,33 @@ namespace Gestion_de_Absence
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Voulez-vous supprimer cette Insription ?","Supprission",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
-            bsInscription.RemoveCurrent();
-            
-        }
+            if (MessageBox.Show("Voulez-vous supprimer cette Insription ?", "Supprission", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                bsInscription.RemoveCurrent();
+            sql = "delete from incription where idstagiaire =" + txtidStagiaire.Text + "";
+            MessageBox.Show(sql);
 
+        }
         private void btnvalider_Click(object sender, EventArgs e)
         {
             if (cbGroupe.SelectedIndex == -1)
+            {
                 MessageBox.Show("Vieullez remplir les champs", "Invertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    bsInscription.EndEdit();
-            Utils.activecom2(false, cbGroupe, pnModification, pnValidation, pnNouveautie, pnNavigation);
-        }
-        string sql;
-        private void Inscription_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Voulez-vous Enregestrez les modification ?", "Enregestrement", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                if (cbGroupe.Text.Equals(""))
+            }
+            else
+            {
+                bsInscription.EndEdit();
+                Utils.activecom2(false, cbGroupe, pnModification, pnValidation, pnNouveautie, pnNavigation);
+            }
+
+                if (!Utils.operation("a"))
                 {
-                    sql = "insert into incription (idstagiaire,idgroupe,annee) values(" + txtidStagiaire.Text + "," + cbGroupe.SelectedValue + "," + txtAnneScholaire.Text + ")";
-                    //MessageBox.Show(sql);
-                    BaseDonnee.exec(sql);
-                }
-                else
-                {
-                    sql = "update incription set idstagiaire=" + txtidStagiaire.Text + ",idgroupe=" + cbGroupe.SelectedValue + ",annee=" + txtAnneScholaire.Text + "";
-                   // MessageBox.Show(sql);
-                    BaseDonnee.exec(sql);
-                }
+                MessageBox.Show(sql + txtidStagiaire.Text + " ,idgroupe =" + cbGroupe.SelectedValue + " ,annee =" + txtAnneScholaire.Text + " where idstagiaire=" + txtidStagiaire.Text);
+                sql = null;
+            }
+                MessageBox.Show(sql + txtidStagiaire.Text + "," + cbGroupe.SelectedValue + "," + txtAnneScholaire.Text + ")");
+                sql = null;
+            
+
         }
     }
 }

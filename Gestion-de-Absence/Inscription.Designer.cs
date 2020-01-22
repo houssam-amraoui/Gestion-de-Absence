@@ -47,6 +47,7 @@
             this.pnNouveautie = new System.Windows.Forms.Panel();
             this.txtidStagiaire = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAjouter = new System.Windows.Forms.Button();
             this.pnNavigation.SuspendLayout();
             this.pnModification.SuspendLayout();
             this.pnValidation.SuspendLayout();
@@ -93,7 +94,7 @@
             // 
             // btnmodifier
             // 
-            this.btnmodifier.Location = new System.Drawing.Point(40, 21);
+            this.btnmodifier.Location = new System.Drawing.Point(116, 16);
             this.btnmodifier.Name = "btnmodifier";
             this.btnmodifier.Size = new System.Drawing.Size(114, 34);
             this.btnmodifier.TabIndex = 4;
@@ -103,7 +104,7 @@
             // 
             // btnSupprimer
             // 
-            this.btnSupprimer.Location = new System.Drawing.Point(160, 21);
+            this.btnSupprimer.Location = new System.Drawing.Point(236, 16);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(114, 34);
             this.btnSupprimer.TabIndex = 4;
@@ -180,18 +181,19 @@
             // pnNavigation
             // 
             this.pnNavigation.Controls.Add(this.lsStagiaire);
-            this.pnNavigation.Location = new System.Drawing.Point(9, 14);
+            this.pnNavigation.Location = new System.Drawing.Point(10, 31);
             this.pnNavigation.Name = "pnNavigation";
             this.pnNavigation.Size = new System.Drawing.Size(213, 298);
             this.pnNavigation.TabIndex = 7;
             // 
             // pnModification
             // 
+            this.pnModification.Controls.Add(this.btnAjouter);
             this.pnModification.Controls.Add(this.btnSupprimer);
             this.pnModification.Controls.Add(this.btnmodifier);
-            this.pnModification.Location = new System.Drawing.Point(251, 210);
+            this.pnModification.Location = new System.Drawing.Point(229, 210);
             this.pnModification.Name = "pnModification";
-            this.pnModification.Size = new System.Drawing.Size(288, 64);
+            this.pnModification.Size = new System.Drawing.Size(363, 64);
             this.pnModification.TabIndex = 9;
             // 
             // pnValidation
@@ -231,6 +233,16 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "IdSagiaire:";
             // 
+            // btnAjouter
+            // 
+            this.btnAjouter.Location = new System.Drawing.Point(3, 16);
+            this.btnAjouter.Name = "btnAjouter";
+            this.btnAjouter.Size = new System.Drawing.Size(107, 34);
+            this.btnAjouter.TabIndex = 5;
+            this.btnAjouter.Text = "Ajouter";
+            this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
+            // 
             // Inscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -251,7 +263,6 @@
             this.Name = "Inscription";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inscription";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Inscription_FormClosing);
             this.Load += new System.EventHandler(this.Inscription_Load);
             this.pnNavigation.ResumeLayout(false);
             this.pnModification.ResumeLayout(false);
@@ -283,5 +294,6 @@
         private System.Windows.Forms.Panel pnNouveautie;
         private System.Windows.Forms.TextBox txtidStagiaire;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnAjouter;
     }
 }

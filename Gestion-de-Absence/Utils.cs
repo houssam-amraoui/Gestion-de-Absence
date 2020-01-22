@@ -70,5 +70,16 @@ namespace Gestion_de_Absence
             p3.Visible = !l;
             p4.Enabled = !l;
         }
+        public static bool operation(string op)
+        {
+            if (op == "a")
+            {
+
+                return true;
+            }
+
+            return false;
+        }
+
     }
 }
