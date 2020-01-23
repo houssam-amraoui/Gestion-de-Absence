@@ -15,6 +15,7 @@ namespace Gestion_de_Absence
     public partial class Inscription : Form
     {
         string sql = null;
+        bool op;
 
         DataSet ds = new DataSet();
         SqlCommand comStagiaire = new SqlCommand();
@@ -124,6 +125,7 @@ namespace Gestion_de_Absence
                 txtAnneScholaire.Text = DateTime.Today.Year + "";
                 Utils.activecom2(true, cbGroupe, pnModification, pnValidation, pnNouveautie, pnNavigation);
                 sql = "insert into incription (idstagiaire,idgroupe,annee) values(";
+                op = true;
 
             }
             else
@@ -137,6 +139,7 @@ namespace Gestion_de_Absence
         {
             Utils.activecom2(true, cbGroupe, pnModification, pnValidation, pnNouveautie, pnNavigation);
             sql = "update incription set idstagiaire=";
+            op = false;
 
         }
 
@@ -166,13 +169,16 @@ namespace Gestion_de_Absence
                 Utils.activecom2(false, cbGroupe, pnModification, pnValidation, pnNouveautie, pnNavigation);
             }
 
-                if (!Utils.operation("a"))
-                {
-                MessageBox.Show(sql + txtidStagiaire.Text + " ,idgroupe =" + cbGroupe.SelectedValue + " ,annee =" + txtAnneScholaire.Text + " where idstagiaire=" + txtidStagiaire.Text);
+            if (op == false)
+            {
+                BaseDonnee.exec(sql + txtidStagiaire.Text + " ,idgroupe =" + cbGroupe.SelectedValue + " ,annee =" + txtAnneScholaire.Text + " where idstagiaire=" + txtidStagiaire.Text);
                 sql = null;
             }
-                MessageBox.Show(sql + txtidStagiaire.Text + "," + cbGroupe.SelectedValue + "," + txtAnneScholaire.Text + ")");
+            else
+            {
+               BaseDonnee.exec(sql + txtidStagiaire.Text + "," + cbGroupe.SelectedValue + "," + txtAnneScholaire.Text + ")");
                 sql = null;
+            }
             
 
         }
