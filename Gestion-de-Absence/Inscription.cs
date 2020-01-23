@@ -154,7 +154,7 @@ namespace Gestion_de_Absence
             if (MessageBox.Show("Voulez-vous supprimer cette Insription ?", "Supprission", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 bsInscription.RemoveCurrent();
             sql = "delete from incription where idstagiaire =" + txtidStagiaire.Text + "";
-            MessageBox.Show(sql);
+            BaseDonnee.exec(sql);
 
         }
         private void btnvalider_Click(object sender, EventArgs e)
