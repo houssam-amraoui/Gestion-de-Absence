@@ -1,11 +1,6 @@
-﻿using Gestion_de_Absence.model;
+﻿using Gestion_de_Absence;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Gestion_de_Absence
@@ -36,7 +31,50 @@ namespace Gestion_de_Absence
         private void cbGroupe_SelectedIndexChanged(object sender, EventArgs e)
         {
             Utils.rempli_liste(cbGroupe);
-            Utils.show_liste(dgvEmploiGroupe);        
+            Utils.show_liste(dgvEmploiGroupe);
+            loadAbsense();
+            loadNotAbsense();
+
+        }
+        private void loadAbsense() {
+            lsAbsence.Items.Clear();
+            List<string> aa = BaseDonneeConnecter.getAbsenseInRealeTime(DateTime.Now, Utils.getnumjour().ToString(), cbGroupe.SelectedItem.ToString(),Utils.getTimeStart().ToString()); 
+            foreach (string ss in aa) {
+                lsAbsence.Items.Add(ss);
+            } 
+        }
+        private void loadNotAbsense()
+        {
+            lsPresence.Items.Clear();
+            List<string> aa = BaseDonneeConnecter.getNotAbsenseInRealeTime(DateTime.Now, Utils.getnumjour().ToString(), cbGroupe.SelectedItem.ToString(), Utils.getTimeStart().ToString());
+            foreach (string ss in aa)
+            {
+                lsPresence.Items.Add(ss);
+            }
+        }
+
+        private void empt_Click(object sender, EventArgs e)
+        {
+            GestionEmploi s = new GestionEmploi();
+            s.ShowDialog();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if(lsPresence.SelectedItem != null) { 
+            BaseDonneeConnecter.addAbsenseInRealeTime(lsPresence.SelectedItem.ToString(),DateTime.Today, Utils.getnumjour().ToString(), cbGroupe.SelectedItem.ToString(), Utils.getTimeStart().ToString());
+            loadAbsense();
+            loadNotAbsense();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (lsAbsence.SelectedItem != null) { 
+                BaseDonneeConnecter.remouveAbsenseInRealeTime(lsAbsence.SelectedItem.ToString(), DateTime.Today, Utils.getnumjour().ToString(), cbGroupe.SelectedItem.ToString(), Utils.getTimeStart().ToString());
+                loadAbsense();
+                loadNotAbsense();
+            }
         }
     }
 }

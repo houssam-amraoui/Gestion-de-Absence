@@ -34,13 +34,14 @@
             this.lsPresence = new System.Windows.Forms.ListBox();
             this.lsAbsence = new System.Windows.Forms.ListBox();
             this.dgvEmploiGroupe = new System.Windows.Forms.DataGridView();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrevious = new System.Windows.Forms.Button();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.empt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiGroupe)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,24 +106,6 @@
             this.dgvEmploiGroupe.Size = new System.Drawing.Size(688, 173);
             this.dgvEmploiGroupe.TabIndex = 4;
             // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(302, 277);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 5;
-            this.btnNext.Text = ">>";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Location = new System.Drawing.Point(302, 531);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
-            this.btnPrevious.TabIndex = 5;
-            this.btnPrevious.Text = "<<";
-            this.btnPrevious.UseVisualStyleBackColor = true;
-            // 
             // Column5
             // 
             this.Column5.HeaderText = "Jour";
@@ -158,6 +141,36 @@
             this.Column4.ReadOnly = true;
             this.Column4.Width = 122;
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(302, 277);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = ">>";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(302, 531);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
+            this.btnPrevious.TabIndex = 5;
+            this.btnPrevious.Text = "<<";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // empt
+            // 
+            this.empt.Location = new System.Drawing.Point(588, 53);
+            this.empt.Name = "empt";
+            this.empt.Size = new System.Drawing.Size(121, 27);
+            this.empt.TabIndex = 0;
+            this.empt.Text = "Modifer empt";
+            this.empt.UseVisualStyleBackColor = true;
+            this.empt.Click += new System.EventHandler(this.empt_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,6 +183,7 @@
             this.Controls.Add(this.lsPresence);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbGroupe);
+            this.Controls.Add(this.empt);
             this.Controls.Add(this.btnModifier);
             this.Name = "Home";
             this.Text = "Home";
@@ -195,6 +209,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button empt;
     }
 }
 

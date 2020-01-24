@@ -15,7 +15,7 @@ namespace Gestion_de_Absence
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Groupe());
+            Application.Run(new Home());
         }
     }
 }

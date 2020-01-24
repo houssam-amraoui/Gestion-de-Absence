@@ -59,8 +59,10 @@ alter table absence add constraint pk_absence primary key (idAbsence);
 
 
 alter table Seance add constraint fk_SeanceUsers foreign key (idusers) references users(idusers);
-alter table absence add constraint fk_absenceSeance foreign key (idSeance) references Seance(idSeance);
+alter table absence add constraint fk_absenceSeance foreign key (idSeance) references Seance(idSeance); -- delete on cascade  
 alter table incription add constraint fk_incriptionSragiaire foreign key (idstagiaire) references Stagiaire(idstagiaire);
 alter table incription add constraint fk_incriptiongroupe foreign key (idgroupe) references Groupe(idgroupe);
 alter table Seance add constraint fk_Seancegroupe foreign key (idgroupe) references Groupe(idgroupe);
 alter table absence add constraint fk_absenceInscription foreign key (idInscription) references incription(idInscription);
+
+

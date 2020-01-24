@@ -10,21 +10,20 @@ namespace Gestion_de_Absence
 {
      class Utils
     {
-       static List<Jour> j = new List<Jour>();
+       static List<Jour> jours = new List<Jour>();
         static string[] tabjour = { "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" };
 
         public static void rempli_liste(ComboBox l)
         {
-            j = BaseDonneeConnecter.getJourFromGroupe(l.SelectedItem.ToString());
+            jours = BaseDonneeConnecter.getJourFromGroupe(l.SelectedItem.ToString());
         }
-
         public  static void show_liste(DataGridView g)
         {
 
-            claer(g);
-            for (int i = 0; i < j.Count; i++)
+            clear(g);
+            for (int i = 0; i < jours.Count; i++)
             {
-                Jour jo = j[i];
+                Jour jo = jours[i];
                 //dgvEmploiTemps.Rows.Insert(i,tabjour[Convert.ToInt32(jo.jour)-1]);
                 foreach (TimeRegistre tm in jo.tmr)
                 {
@@ -32,15 +31,11 @@ namespace Gestion_de_Absence
                 }
             }
         }
-        public static void claer( DataGridView dgv)
+        public static void clear( DataGridView dgv)
         {
             dgv.Rows.Clear();
-            dgv.Rows.Add("Lundi");
-            dgv.Rows.Add("Mardi");
-            dgv.Rows.Add("Mercredi");
-            dgv.Rows.Add("Jeudi");
-            dgv.Rows.Add("Vendredi");
-            dgv.Rows.Add("Samedi");
+            foreach(string a in tabjour)
+            dgv.Rows.Add(a);
         }
         public static Boolean isVide(int numjour, int jourpreriod,DataGridView g)
         {
@@ -61,5 +56,27 @@ namespace Gestion_de_Absence
             p3.Enabled = v;
             p4.Enabled = !v;
         }
+
+        public static int getTimeStart() {
+           // Jour j = jours[getnumjour()];
+            int aa=int.Parse( DateTime.Now.ToString("hhmm"));
+            if (aa > 0830 && aa < 1100)
+                return 1;
+            if (aa > 1100 && aa < 1330)
+                return 2;
+            if (aa > 1330 && aa < 1600)
+                return 3;
+            if (aa > 1600 && aa < 1830)
+                return 4;
+
+            return -1;
+        }
+        public static int getnumjour()
+        {
+            DayOfWeek a= DateTime.Now.DayOfWeek;
+            int ss =(int)a;
+            return ss;
+        }
+
     }
 }
