@@ -56,6 +56,14 @@ namespace Gestion_de_Absence
             p3.Enabled = v;
             p4.Enabled = !v;
         }
+        public static void activecom2(bool l, ComboBox b, Panel p1, Panel p2, Panel p3, Panel p4)
+        {
+            b.Enabled = l;
+            p1.Visible = !l;
+            p2.Visible = l;
+            p3.Visible = !l;
+            p4.Enabled = !l;
+        }
 
         public static int getTimeStart() {
            // Jour j = jours[getnumjour()];
