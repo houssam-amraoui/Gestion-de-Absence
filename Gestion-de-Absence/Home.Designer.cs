@@ -42,7 +42,9 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.empt = new System.Windows.Forms.Button();
+            this.panelabs = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiGroupe)).BeginInit();
+            this.panelabs.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnModifier
@@ -76,7 +78,7 @@
             // lsPresence
             // 
             this.lsPresence.FormattingEnabled = true;
-            this.lsPresence.Location = new System.Drawing.Point(21, 277);
+            this.lsPresence.Location = new System.Drawing.Point(14, 12);
             this.lsPresence.Name = "lsPresence";
             this.lsPresence.Size = new System.Drawing.Size(275, 277);
             this.lsPresence.TabIndex = 3;
@@ -84,7 +86,7 @@
             // lsAbsence
             // 
             this.lsAbsence.FormattingEnabled = true;
-            this.lsAbsence.Location = new System.Drawing.Point(383, 277);
+            this.lsAbsence.Location = new System.Drawing.Point(376, 12);
             this.lsAbsence.Name = "lsAbsence";
             this.lsAbsence.Size = new System.Drawing.Size(286, 277);
             this.lsAbsence.TabIndex = 3;
@@ -143,7 +145,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(302, 277);
+            this.btnNext.Location = new System.Drawing.Point(295, 12);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
             this.btnNext.TabIndex = 5;
@@ -153,7 +155,7 @@
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(302, 531);
+            this.btnPrevious.Location = new System.Drawing.Point(295, 266);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(75, 23);
             this.btnPrevious.TabIndex = 5;
@@ -171,16 +173,24 @@
             this.empt.UseVisualStyleBackColor = true;
             this.empt.Click += new System.EventHandler(this.empt_Click);
             // 
+            // panelabs
+            // 
+            this.panelabs.Controls.Add(this.btnPrevious);
+            this.panelabs.Controls.Add(this.btnNext);
+            this.panelabs.Controls.Add(this.lsAbsence);
+            this.panelabs.Controls.Add(this.lsPresence);
+            this.panelabs.Location = new System.Drawing.Point(21, 279);
+            this.panelabs.Name = "panelabs";
+            this.panelabs.Size = new System.Drawing.Size(688, 301);
+            this.panelabs.TabIndex = 6;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 633);
-            this.Controls.Add(this.btnPrevious);
-            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.panelabs);
             this.Controls.Add(this.dgvEmploiGroupe);
-            this.Controls.Add(this.lsAbsence);
-            this.Controls.Add(this.lsPresence);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbGroupe);
             this.Controls.Add(this.empt);
@@ -189,6 +199,7 @@
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Home_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiGroupe)).EndInit();
+            this.panelabs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,6 +221,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button empt;
+        private System.Windows.Forms.Panel panelabs;
     }
 }
 

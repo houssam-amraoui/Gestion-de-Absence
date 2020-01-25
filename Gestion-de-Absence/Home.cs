@@ -19,6 +19,8 @@ namespace Gestion_de_Absence
                 cbGroupe.Items.Add(ss);
             }
             cbGroupe.SelectedIndex = 0;
+
+
             
 
         }
@@ -32,6 +34,11 @@ namespace Gestion_de_Absence
         {
             Utils.rempli_liste(cbGroupe);
             Utils.show_liste(dgvEmploiGroupe);
+            dgvEmploiGroupe.Rows[Utils.getnumjour()-1].Cells[Utils.getTimeStart()].Style.BackColor = System.Drawing.Color.Gold;
+            if (Utils.isVide(Utils.getnumjour() - 1, Utils.getTimeStart()-1, dgvEmploiGroupe))
+                panelabs.Enabled = false;
+            else
+                panelabs.Enabled = true;
             loadAbsense();
             loadNotAbsense();
 
