@@ -1,8 +1,10 @@
 ﻿using Gestion_de_Absence.model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 
@@ -67,7 +69,8 @@ namespace Gestion_de_Absence
 
         public static int getTimeStart() {
            // Jour j = jours[getnumjour()];
-            int aa=int.Parse( DateTime.Now.ToString("hhmm"));
+            int aa=int.Parse( DateTime.Now.ToString("HHmm"));
+
             if (aa > 0830 && aa < 1100)
                 return 1;
             if (aa > 1100 && aa < 1330)
@@ -77,7 +80,7 @@ namespace Gestion_de_Absence
             if (aa > 1600 && aa < 1830)
                 return 4;
 
-            return -1;
+            return 0;
         }
         public static int getnumjour()
         {

@@ -105,13 +105,13 @@ namespace Gestion_de_Absence
             List<string> j = new List<string>();
             ouvrirconnection();
             command.Connection = connection;
-            command.CommandText = "select s.idstagiaire, s.name from Stagiaire s inner join incription i on i.idstagiaire = s.idstagiaire inner join Groupe g on g.idgroupe = i.idgroupe inner join Seance se on se.idgroupe = g.idgroupe inner join absence a on a.idSeance = se.idSeance and a.idInscription = i.idInscription where g.nomgroupe = '"+nomgroupe+"' and se.timestart = "+timestart+" and se.numjour = "+numjour+" and a.date = '"+ time.ToString("d") + "' and i.annee = "+time.ToString("yyyy");
+            command.CommandText = "select s.idstagiaire, s.name from Stagiaire s inner join incription i on i.idstagiaire = s.idstagiaire inner join Groupe g on g.idgroupe = i.idgroupe inner join Seance se on se.idgroupe = g.idgroupe inner join absence a on a.idSeance = se.idSeance and a.idInscription = i.idInscription where g.nomgroupe = '"+nomgroupe+"' and se.timestart = "+timestart+" and se.numjour = "+numjour+" and a.date = '"+ time.ToString("yyyy/MM/dd") + "' and i.annee = "+time.ToString("yyyy");
             SqlDataReader dr = command.ExecuteReader();
-            while (dr.Read())
-            {
-                j.Add((string)dr["name"]);
-            }
-            dr.Close();
+              while (dr.Read())
+               {
+                   j.Add((string)dr["name"]);
+               }
+               dr.Close();
             return j;
         }
 
@@ -120,7 +120,7 @@ namespace Gestion_de_Absence
             List<string> j = new List<string>();
             ouvrirconnection();
             command.Connection = connection;
-            command.CommandText = "select s.idstagiaire , s.name from Stagiaire s inner join incription i on i.idstagiaire = s.idstagiaire inner join Groupe g on g.idgroupe = i.idgroupe inner join Seance se on se.idgroupe = g.idgroupe where g.nomgroupe = '"+nomgroupe+"' and se.timestart = "+timestart+" and se.numjour = "+numjour+ " and i.annee = "+time.ToString("yyyy")+" and i.idInscription not in(select a.idInscription from absence a inner join Seance se on se.idSeance = a.idSeance where a.date='" + time.ToString("d") + "' and se.timestart= "+timestart+" and se.numjour="+numjour+" )";
+            command.CommandText = "select s.idstagiaire , s.name from Stagiaire s inner join incription i on i.idstagiaire = s.idstagiaire inner join Groupe g on g.idgroupe = i.idgroupe inner join Seance se on se.idgroupe = g.idgroupe where g.nomgroupe = '"+nomgroupe+"' and se.timestart = "+timestart+" and se.numjour = "+numjour+ " and i.annee = "+ time.ToString("yyyy") + " and i.idInscription not in(select a.idInscription from absence a inner join Seance se on se.idSeance = a.idSeance where a.date='" + time.ToString("yyyy/MM/dd") + "' and se.timestart= "+timestart+" and se.numjour="+numjour+" )";
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
@@ -133,14 +133,14 @@ namespace Gestion_de_Absence
         {
             ouvrirconnection();
             command.Connection = connection;
-            command.CommandText = "insert into absence (idInscription,idSeance,date) values ((select idInscription from incription i inner join Stagiaire s on s.idstagiaire = i.idstagiaire where s.name= '"+stagiair+"' and i.annee= '"+time.ToString("yyyy")+"'), (select idSeance from Seance se inner join Groupe g on g.idgroupe= se.idgroupe where g.nomgroupe='"+nomgroupe+"' and se.timestart= "+timestart+" and se.numjour="+numjour+"),'"+time.ToString("d")+"')";
+            command.CommandText = "insert into absence (idInscription,idSeance,date) values ((select idInscription from incription i inner join Stagiaire s on s.idstagiaire = i.idstagiaire where s.name= '"+stagiair+"' and i.annee= '"+time.ToString("yyyy")+"'), (select idSeance from Seance se inner join Groupe g on g.idgroupe= se.idgroupe where g.nomgroupe='"+nomgroupe+"' and se.timestart= "+timestart+" and se.numjour="+numjour+"),'"+time.ToString("yyyy/MM/dd") +"')";
             command.ExecuteNonQuery();
         }
         public static void remouveAbsenseInRealeTime(string stagiair, DateTime time, string numjour, string nomgroupe, string timestart)
         {
             ouvrirconnection();
             command.Connection = connection;
-            command.CommandText = "delete from absence where idInscription = (select idInscription from incription i inner join Stagiaire s on s.idstagiaire = i.idstagiaire where s.name= '" + stagiair + "' and i.annee= '" + time.ToString("yyyy") + "') and idSeance = (select idSeance from Seance se inner join Groupe g on g.idgroupe = se.idgroupe where g.nomgroupe = '" + nomgroupe + "' and se.timestart = " + timestart + " and se.numjour = " + numjour + ") and date = '" + time.ToString("d") + "'";
+            command.CommandText = "delete from absence where idInscription = (select idInscription from incription i inner join Stagiaire s on s.idstagiaire = i.idstagiaire where s.name= '" + stagiair + "' and i.annee= '" + time.ToString("yyyy") + "') and idSeance = (select idSeance from Seance se inner join Groupe g on g.idgroupe = se.idgroupe where g.nomgroupe = '" + nomgroupe + "' and se.timestart = " + timestart + " and se.numjour = " + numjour + ") and date = '" + time.ToString("yyyy/MM/dd") + "'";
             command.ExecuteNonQuery();
         }
 

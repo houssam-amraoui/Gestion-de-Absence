@@ -1,4 +1,5 @@
 ﻿using Gestion_de_Absence;
+using Gestion_de_Absence.model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -20,27 +21,22 @@ namespace Gestion_de_Absence
             }
             cbGroupe.SelectedIndex = 0;
 
+            
+
 
             
 
         }
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            Stagiaire s = new Stagiaire();
+            Inscription s = new Inscription();
             s.ShowDialog();
+            update();
         }
 
         private void cbGroupe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Utils.rempli_liste(cbGroupe);
-            Utils.show_liste(dgvEmploiGroupe);
-            dgvEmploiGroupe.Rows[Utils.getnumjour()-1].Cells[Utils.getTimeStart()].Style.BackColor = System.Drawing.Color.Gold;
-            if (Utils.isVide(Utils.getnumjour() - 1, Utils.getTimeStart()-1, dgvEmploiGroupe))
-                panelabs.Enabled = false;
-            else
-                panelabs.Enabled = true;
-            loadAbsense();
-            loadNotAbsense();
+            update();
 
         }
         private void loadAbsense() {
@@ -64,6 +60,8 @@ namespace Gestion_de_Absence
         {
             GestionEmploi s = new GestionEmploi();
             s.ShowDialog();
+            update();
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -82,6 +80,19 @@ namespace Gestion_de_Absence
                 loadAbsense();
                 loadNotAbsense();
             }
+        }
+
+        private void update() {
+            Utils.rempli_liste(cbGroupe);
+            Utils.show_liste(dgvEmploiGroupe);
+             dgvEmploiGroupe.Rows[Utils.getnumjour() - 1].Cells[Utils.getTimeStart()].Style.BackColor = System.Drawing.Color.Gold;
+            if (Utils.isVide(Utils.getnumjour() - 1, Utils.getTimeStart() - 1, dgvEmploiGroupe))
+                panelabs.Enabled = false;
+            else
+                panelabs.Enabled = true;
+            loadAbsense();
+            loadNotAbsense();
+
         }
     }
 }

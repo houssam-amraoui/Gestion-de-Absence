@@ -12,7 +12,7 @@ namespace Gestion_de_Absence.model
    static class BaseDonnee
     {
       public static SqlConnection connection = new SqlConnection();
-        static DataSet dataset = new DataSet();
+       public  static DataSet dataset = new DataSet();
 
         public static void ouvrirConnection()
         {
@@ -30,8 +30,14 @@ namespace Gestion_de_Absence.model
         {
             ouvrirConnection();
             SqlDataAdapter dataAdapte = new SqlDataAdapter("select * from " + t, connection);
-            if (!dataset.Tables.Contains(t)) dataAdapte.Fill(dataset,t);
-            dataAdapte = null;
+            if (!dataset.Tables.Contains(t)) dataAdapte.Fill(dataset, t);
+            else
+            {
+                dataset.Tables[t].Clear();
+                dataAdapte.Fill(dataset, t);
+            }
+
+                dataAdapte = null;
         }
         public static BindingSource RemplirListControl(ListControl l,string t,string dm,string vm)
         {

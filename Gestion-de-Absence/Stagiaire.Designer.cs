@@ -292,7 +292,6 @@
             this.label6.Size = new System.Drawing.Size(75, 17);
             this.label6.TabIndex = 10;
             this.label6.Text = "IdStagiaire";
-            this.label6.Visible = false;
             // 
             // txtIdStagiaire
             // 
@@ -301,7 +300,6 @@
             this.txtIdStagiaire.Name = "txtIdStagiaire";
             this.txtIdStagiaire.Size = new System.Drawing.Size(160, 22);
             this.txtIdStagiaire.TabIndex = 9;
-            this.txtIdStagiaire.Visible = false;
             // 
             // pnSValidation
             // 
@@ -327,7 +325,6 @@
             this.Name = "Stagiaire";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stagiaire";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Stagiaire_FormClosing);
             this.Load += new System.EventHandler(this.Stagiaire_Load);
             this.pnSNavigation.ResumeLayout(false);
             this.pnSNavigation.PerformLayout();
