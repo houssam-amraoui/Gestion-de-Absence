@@ -8,13 +8,20 @@ namespace Gestion_de_Absence
 {
     public partial class Home : Form
     {
-        public Home()
+        private string nameusers;
+        private string priorite;
+
+        public Home(string name,string prio)
         {
             InitializeComponent();
+            this.nameusers = name;
+            this.priorite = prio;
         }
+
         private void Home_Load(object sender, EventArgs e)
         {
             label1.Text =DateTime.Today.ToString("d");
+            label3.Text = nameusers;
             foreach (string ss in BaseDonneeConnecter.getGroupes())
             {
                 cbGroupe.Items.Add(ss);

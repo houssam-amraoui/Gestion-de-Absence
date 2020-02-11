@@ -66,7 +66,7 @@
             this.lsStagiaire.Margin = new System.Windows.Forms.Padding(4);
             this.lsStagiaire.Name = "lsStagiaire";
             this.lsStagiaire.Size = new System.Drawing.Size(348, 404);
-            this.lsStagiaire.TabIndex = 3;
+            this.lsStagiaire.TabIndex = 12;
             // 
             // txtChercher
             // 
@@ -74,7 +74,7 @@
             this.txtChercher.Margin = new System.Windows.Forms.Padding(4);
             this.txtChercher.Name = "txtChercher";
             this.txtChercher.Size = new System.Drawing.Size(240, 22);
-            this.txtChercher.TabIndex = 4;
+            this.txtChercher.TabIndex = 10;
             this.txtChercher.TextChanged += new System.EventHandler(this.txtChercher_TextChanged);
             // 
             // btnSChercher
@@ -83,7 +83,7 @@
             this.btnSChercher.Margin = new System.Windows.Forms.Padding(4);
             this.btnSChercher.Name = "btnSChercher";
             this.btnSChercher.Size = new System.Drawing.Size(100, 28);
-            this.btnSChercher.TabIndex = 1;
+            this.btnSChercher.TabIndex = 11;
             this.btnSChercher.Text = "Chercher";
             this.btnSChercher.UseVisualStyleBackColor = true;
             this.btnSChercher.Click += new System.EventHandler(this.btnSChercher_Click);
@@ -102,7 +102,7 @@
             this.txtNom.Margin = new System.Windows.Forms.Padding(4);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(160, 22);
-            this.txtNom.TabIndex = 2;
+            this.txtNom.TabIndex = 3;
             // 
             // txtCin
             // 
@@ -110,7 +110,7 @@
             this.txtCin.Margin = new System.Windows.Forms.Padding(4);
             this.txtCin.Name = "txtCin";
             this.txtCin.Size = new System.Drawing.Size(160, 22);
-            this.txtCin.TabIndex = 2;
+            this.txtCin.TabIndex = 4;
             // 
             // btnSAjouter
             // 
@@ -118,7 +118,7 @@
             this.btnSAjouter.Margin = new System.Windows.Forms.Padding(4);
             this.btnSAjouter.Name = "btnSAjouter";
             this.btnSAjouter.Size = new System.Drawing.Size(100, 28);
-            this.btnSAjouter.TabIndex = 1;
+            this.btnSAjouter.TabIndex = 5;
             this.btnSAjouter.Text = "Ajouter";
             this.btnSAjouter.UseVisualStyleBackColor = true;
             this.btnSAjouter.Click += new System.EventHandler(this.btnSAjouter_Click);
@@ -129,7 +129,7 @@
             this.btnSModifier.Margin = new System.Windows.Forms.Padding(4);
             this.btnSModifier.Name = "btnSModifier";
             this.btnSModifier.Size = new System.Drawing.Size(100, 28);
-            this.btnSModifier.TabIndex = 1;
+            this.btnSModifier.TabIndex = 6;
             this.btnSModifier.Text = "Modifier";
             this.btnSModifier.UseVisualStyleBackColor = true;
             this.btnSModifier.Click += new System.EventHandler(this.btnSModifier_Click);
@@ -140,7 +140,7 @@
             this.btnSSupprimer.Margin = new System.Windows.Forms.Padding(4);
             this.btnSSupprimer.Name = "btnSSupprimer";
             this.btnSSupprimer.Size = new System.Drawing.Size(100, 28);
-            this.btnSSupprimer.TabIndex = 1;
+            this.btnSSupprimer.TabIndex = 7;
             this.btnSSupprimer.Text = "Supprimer";
             this.btnSSupprimer.UseVisualStyleBackColor = true;
             this.btnSSupprimer.Click += new System.EventHandler(this.btnSSupprimer_Click);
@@ -151,7 +151,7 @@
             this.btnSAnnuler.Margin = new System.Windows.Forms.Padding(4);
             this.btnSAnnuler.Name = "btnSAnnuler";
             this.btnSAnnuler.Size = new System.Drawing.Size(100, 28);
-            this.btnSAnnuler.TabIndex = 1;
+            this.btnSAnnuler.TabIndex = 9;
             this.btnSAnnuler.Text = "Annuler";
             this.btnSAnnuler.UseVisualStyleBackColor = true;
             this.btnSAnnuler.Click += new System.EventHandler(this.btnSAnnuler_Click);
@@ -162,7 +162,7 @@
             this.btnSValider.Margin = new System.Windows.Forms.Padding(4);
             this.btnSValider.Name = "btnSValider";
             this.btnSValider.Size = new System.Drawing.Size(100, 28);
-            this.btnSValider.TabIndex = 1;
+            this.btnSValider.TabIndex = 8;
             this.btnSValider.Text = "Valider";
             this.btnSValider.UseVisualStyleBackColor = true;
             this.btnSValider.Click += new System.EventHandler(this.btnSValider_Click);
@@ -218,7 +218,7 @@
             this.btnSLast.Margin = new System.Windows.Forms.Padding(4);
             this.btnSLast.Name = "btnSLast";
             this.btnSLast.Size = new System.Drawing.Size(41, 28);
-            this.btnSLast.TabIndex = 5;
+            this.btnSLast.TabIndex = 16;
             this.btnSLast.Text = ">>";
             this.btnSLast.UseVisualStyleBackColor = true;
             this.btnSLast.Click += new System.EventHandler(this.btnSLast_Click);
@@ -229,7 +229,7 @@
             this.btnSPrevious.Margin = new System.Windows.Forms.Padding(4);
             this.btnSPrevious.Name = "btnSPrevious";
             this.btnSPrevious.Size = new System.Drawing.Size(41, 28);
-            this.btnSPrevious.TabIndex = 5;
+            this.btnSPrevious.TabIndex = 15;
             this.btnSPrevious.Text = ">";
             this.btnSPrevious.UseVisualStyleBackColor = true;
             this.btnSPrevious.Click += new System.EventHandler(this.btnSPrevious_Click);
@@ -240,7 +240,7 @@
             this.btnSNext.Margin = new System.Windows.Forms.Padding(4);
             this.btnSNext.Name = "btnSNext";
             this.btnSNext.Size = new System.Drawing.Size(41, 28);
-            this.btnSNext.TabIndex = 5;
+            this.btnSNext.TabIndex = 14;
             this.btnSNext.Text = "<";
             this.btnSNext.UseVisualStyleBackColor = true;
             this.btnSNext.Click += new System.EventHandler(this.btnSNext_Click);
@@ -251,7 +251,7 @@
             this.btnSFirst.Margin = new System.Windows.Forms.Padding(4);
             this.btnSFirst.Name = "btnSFirst";
             this.btnSFirst.Size = new System.Drawing.Size(41, 28);
-            this.btnSFirst.TabIndex = 5;
+            this.btnSFirst.TabIndex = 13;
             this.btnSFirst.Text = "<<";
             this.btnSFirst.UseVisualStyleBackColor = true;
             this.btnSFirst.Click += new System.EventHandler(this.btnSFirst_Click);
@@ -299,7 +299,7 @@
             this.txtIdStagiaire.Location = new System.Drawing.Point(133, 23);
             this.txtIdStagiaire.Name = "txtIdStagiaire";
             this.txtIdStagiaire.Size = new System.Drawing.Size(160, 22);
-            this.txtIdStagiaire.TabIndex = 9;
+            this.txtIdStagiaire.TabIndex = 1;
             // 
             // pnSValidation
             // 
