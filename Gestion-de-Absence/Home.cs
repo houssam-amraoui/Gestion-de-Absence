@@ -20,7 +20,7 @@ namespace Gestion_de_Absence
 
         private void Home_Load(object sender, EventArgs e)
         {
-            if (priorite == 1 || priorite == 0)
+            if (priorite == 2 || priorite == 0)
             {
                 btnModifier.Visible = true;
             }

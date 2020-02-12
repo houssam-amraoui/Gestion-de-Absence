@@ -46,8 +46,10 @@ namespace Gestion_de_Absence
             if (dr.HasRows)
             {
                 dr.Close();
+                
                 Home h = new Home(nameusers,priorite);
                 h.ShowDialog();
+
             }
             else
             {
