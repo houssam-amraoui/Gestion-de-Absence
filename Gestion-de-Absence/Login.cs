@@ -22,15 +22,22 @@ namespace Gestion_de_Absence
         {
             BaseDonnee.ouvrirConnection();
             //nameusers and priorite
-            string nameusers = "select nameusers from users";
+            string nameusers = "select nameusers from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'";
             SqlCommand com2 = new SqlCommand(nameusers, BaseDonnee.connection);
-            string priorite = "select priorite from users";
+            int priorite = 0;
+            SqlCommand com3 = new SqlCommand("select priorite from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'", BaseDonnee.connection);
             SqlDataReader dr2 = com2.ExecuteReader();
             while (dr2.Read())
             {
                nameusers=(string)dr2["nameusers"];
             }
             dr2.Close();
+            SqlDataReader dr3 = com3.ExecuteReader();
+            while (dr3.Read())
+            {
+                priorite = (int)dr3["priorite"];
+            }
+            dr3.Close();
 
             //Login
             string sql = "select * from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'";

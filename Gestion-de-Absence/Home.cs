@@ -8,18 +8,24 @@ namespace Gestion_de_Absence
 {
     public partial class Home : Form
     {
-        private string nameusers;
-        private string priorite;
+        public static string nameusers;
+        public static int priorite;
 
-        public Home(string name,string prio)
+        public Home(string name,int prio)
         {
             InitializeComponent();
-            this.nameusers = name;
-            this.priorite = prio;
+            nameusers = name;
+           priorite = prio;
         }
 
         private void Home_Load(object sender, EventArgs e)
         {
+            if (priorite == 1 || priorite == 0)
+            {
+                btnModifier.Visible = true;
+            }
+            else
+                btnModifier.Visible = false;
             label1.Text =DateTime.Today.ToString("d");
             label3.Text = nameusers;
             foreach (string ss in BaseDonneeConnecter.getGroupes())
