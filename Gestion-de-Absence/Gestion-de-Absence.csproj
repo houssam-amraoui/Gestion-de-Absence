@@ -89,6 +89,12 @@
     <Compile Include="Stagiaire.Designer.cs">
       <DependentUpon>Stagiaire.cs</DependentUpon>
     </Compile>
+    <Compile Include="User_Inscription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User_Inscription.Designer.cs">
+      <DependentUpon>User_Inscription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="GestionEmploi.resx">
       <DependentUpon>GestionEmploi.cs</DependentUpon>
@@ -116,6 +122,9 @@
     </Compile>
     <EmbeddedResource Include="Stagiaire.resx">
       <DependentUpon>Stagiaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User_Inscription.resx">
+      <DependentUpon>User_Inscription.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

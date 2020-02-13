@@ -56,5 +56,11 @@ namespace Gestion_de_Absence
                 MessageBox.Show("Login ou le mot de passe sont Incorrect !!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            User_Inscription u = new User_Inscription();
+            u.Show();
+        }
     }
 }

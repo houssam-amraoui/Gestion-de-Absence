@@ -10,6 +10,7 @@ namespace Gestion_de_Absence
     {
         public static string nameusers;
         public static int priorite;
+        bool isjust;
 
         public Home(string name,int prio)
         {
@@ -20,12 +21,7 @@ namespace Gestion_de_Absence
 
         private void Home_Load(object sender, EventArgs e)
         {
-            if (priorite == 2 || priorite == 0)
-            {
-                btnModifier.Visible = true;
-            }
-            else
-                btnModifier.Visible = false;
+      
             label1.Text =DateTime.Today.ToString("d");
             label3.Text = nameusers;
             foreach (string ss in BaseDonneeConnecter.getGroupes())
@@ -42,9 +38,19 @@ namespace Gestion_de_Absence
         }
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            Inscription s = new Inscription();
-            s.ShowDialog();
-            update();
+            if (priorite == 2 || priorite == 0)
+            {
+                isjust = true;
+                Inscription s = new Inscription();
+                s.ShowDialog();
+                update();
+            }
+            else
+            {
+                isjust = false;
+                MessageBox.Show("Cette action est reservie a au d'autre fonction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
         }
 
         private void cbGroupe_SelectedIndexChanged(object sender, EventArgs e)
