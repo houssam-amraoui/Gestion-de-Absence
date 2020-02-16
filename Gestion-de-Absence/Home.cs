@@ -1,4 +1,5 @@
 ﻿using Gestion_de_Absence;
+using Gestion_de_Absence.model;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -7,13 +8,22 @@ namespace Gestion_de_Absence
 {
     public partial class Home : Form
     {
-        public Home()
+        public static string nameusers;
+        public static int priorite;
+        bool isjust;
+
+        public Home(string name,int prio)
         {
             InitializeComponent();
+            nameusers = name;
+           priorite = prio;
         }
+
         private void Home_Load(object sender, EventArgs e)
         {
+      
             label1.Text =DateTime.Today.ToString("d");
+            label3.Text = nameusers;
             foreach (string ss in BaseDonneeConnecter.getGroupes())
             {
                 cbGroupe.Items.Add(ss);
@@ -25,24 +35,29 @@ namespace Gestion_de_Absence
 
             
 
+            
+
         }
         private void btnModifier_Click(object sender, EventArgs e)
         {
-            Stagiaire s = new Stagiaire();
-            s.ShowDialog();
+            if (priorite == 2 || priorite == 0)
+            {
+                isjust = true;
+                Inscription s = new Inscription();
+                s.ShowDialog();
+                update();
+            }
+            else
+            {
+                isjust = false;
+                MessageBox.Show("Cette action est reservie a au d'autre fonction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
         }
 
         private void cbGroupe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Utils.rempli_liste(cbGroupe);
-            Utils.show_liste(dgvEmploiGroupe);
-            dgvEmploiGroupe.Rows[Utils.getnumjour()-1].Cells[Utils.getTimeStart()].Style.BackColor = System.Drawing.Color.Gold;
-            if (Utils.isVide(Utils.getnumjour() - 1, Utils.getTimeStart()-1, dgvEmploiGroupe))
-                panelabs.Enabled = false;
-            else
-                panelabs.Enabled = true;
-            loadAbsense();
-            loadNotAbsense();
+            update();
 
         }
         private void loadAbsense() {
@@ -66,6 +81,8 @@ namespace Gestion_de_Absence
         {
             GestionEmploi s = new GestionEmploi();
             s.ShowDialog();
+            update();
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -84,6 +101,19 @@ namespace Gestion_de_Absence
                 loadAbsense();
                 loadNotAbsense();
             }
+        }
+
+        private void update() {
+            Utils.rempli_liste(cbGroupe);
+            Utils.show_liste(dgvEmploiGroupe);
+             dgvEmploiGroupe.Rows[Utils.getnumjour() - 1].Cells[Utils.getTimeStart()].Style.BackColor = System.Drawing.Color.Gold;
+            if (Utils.isVide(Utils.getnumjour() - 1, Utils.getTimeStart() - 1, dgvEmploiGroupe))
+                panelabs.Enabled = false;
+            else
+                panelabs.Enabled = true;
+            loadAbsense();
+            loadNotAbsense();
+
         }
     }
 }

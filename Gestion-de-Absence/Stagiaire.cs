@@ -15,7 +15,9 @@ namespace Gestion_de_Absence
     {
         BindingSource bs;
         int conteur = -1;
-     
+        bool op;
+        string sql;
+
         public Stagiaire()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace Gestion_de_Absence
 
         private void Stagiaire_Load(object sender, EventArgs e)
         {
+          
             bs = BaseDonnee.RemplirListControl(lsStagiaire, "Stagiaire", "name", "idstagiaire");
             txtIdStagiaire.DataBindings.Add("text", bs, "idstagiaire");
             txtNum.DataBindings.Add("text", bs, "numstagiaire");
@@ -34,12 +37,16 @@ namespace Gestion_de_Absence
         {
             bs.AddNew();
             txtIdStagiaire.Text = conteur + "";
-            Utils.activecom(false, pnSModification, pnSValidation, pnSNavigation,pnSZoneText);
+            Utils.activecom(false, pnSModification, pnSValidation, pnSNavigation, pnSZoneText);
+            sql = "insert into stagiaire(numStagiaire,name,cin) values (";
+            op = true;
         }
 
         private void btnSModifier_Click(object sender, EventArgs e)
         {
             Utils.activecom(false, pnSModification, pnSValidation, pnSNavigation, pnSZoneText);
+            sql = "update Stagiaire set numStagiaire =";
+            op = false;
         }
 
         private void btnSValider_Click(object sender, EventArgs e)
@@ -50,9 +57,24 @@ namespace Gestion_de_Absence
             }
             else
             {
+               
+                if (op == true)
+                {
+                  BaseDonnee.exec(sql + txtNum.Text + ",'" + txtNom.Text + "','" + txtCin.Text + "')");
+                    
+                }
+                else
+                {
+                    BaseDonnee.exec(sql + txtNum.Text + " name ='" + txtNom.Text + "',cin='" + txtCin.Text + "' where idstagiaire="+txtIdStagiaire.Text);
+                    
+                }
                 bs.EndEdit();
+                BaseDonnee.remplirTable("Stagiaire");
                 Utils.activecom(true, pnSModification, pnSValidation, pnSNavigation, pnSZoneText);
+                    
                 conteur--;
+               
+
             }
         }
 
@@ -64,7 +86,7 @@ namespace Gestion_de_Absence
 
         private void btnSChercher_Click(object sender, EventArgs e)
         {
-            bs.Filter="name like '%"+txtChercher.Text+"%'";
+            bs.Filter = "name like '%" + txtChercher.Text + "%'";
         }
 
         private void txtChercher_TextChanged(object sender, EventArgs e)
@@ -94,19 +116,15 @@ namespace Gestion_de_Absence
 
         private void btnSSupprimer_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Voulez-vous vraiment supprimer se Stagiaire ?", "Supprission", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Voulez-vous vraiment supprimer se Stagiaire ?", "Supprission", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
+                
+                sql = "delete from Stagiaire where idstagiaire=" + txtIdStagiaire.Text;
+                BaseDonnee.exec(sql);
                 bs.RemoveCurrent();
-            }
-            
-        }
 
-        private void Stagiaire_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if(MessageBox.Show("Voulez-vous enregestrez les modification ?", "Enregestrement", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                BaseDonnee.syncroniser("Stagiaire");
             }
+
         }
     }
-    }
+}

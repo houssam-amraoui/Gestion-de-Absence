@@ -17,7 +17,7 @@ namespace Gestion_de_Absence
         string sql = null;
         bool op;
 
-        DataSet ds = new DataSet();
+        DataSet ds;
         SqlCommand comStagiaire = new SqlCommand();
         SqlCommand comGroupe = new SqlCommand();
         SqlCommand comInscription = new SqlCommand();
@@ -26,9 +26,9 @@ namespace Gestion_de_Absence
         SqlDataAdapter daGroupe;
         SqlDataAdapter daInscription;
 
-        BindingSource bsStagiaire = new BindingSource();
-        BindingSource bsGroupe = new BindingSource();
-        BindingSource bsInscription = new BindingSource();
+        BindingSource bsStagiaire;
+        BindingSource bsGroupe;
+        BindingSource bsInscription;
 
         SqlCommandBuilder cb;
         public Inscription()
@@ -39,9 +39,11 @@ namespace Gestion_de_Absence
         private void Inscription_Load(object sender, EventArgs e)
         {
             BaseDonnee.ouvrirConnection();
+            ds = new DataSet();
             comStagiaire.CommandText = "select * from Stagiaire";
             comGroupe.CommandText = "select * from Groupe";
             comInscription.CommandText = "select * from incription";
+            
 
             comStagiaire.Connection = BaseDonnee.connection;
             comGroupe.Connection = BaseDonnee.connection;
@@ -52,6 +54,8 @@ namespace Gestion_de_Absence
             daGroupe = new SqlDataAdapter(comGroupe);
             daInscription = new SqlDataAdapter(comInscription);
 
+
+            
 
             daStagiaire.Fill(ds, "Stagiaire");
             daGroupe.Fill(ds, "Groupe");
@@ -73,6 +77,10 @@ namespace Gestion_de_Absence
 
             ds.Relations.Add(r1);
             ds.Relations.Add(r2);
+
+            bsStagiaire = new BindingSource();
+            bsGroupe = new BindingSource();
+            bsInscription = new BindingSource();
 
 
             bsGroupe.DataSource = ds;
@@ -105,8 +113,12 @@ namespace Gestion_de_Absence
         {
             Stagiaire s = new Stagiaire();
             s.ShowDialog();
-            Application.Restart();
-
+            txtidStagiaire.DataBindings.Clear();
+            txtName.DataBindings.Clear();
+            cbGroupe.DataBindings.Clear();
+            txtAnneScholaire.DataBindings.Clear();
+            Inscription_Load(null, null);
+            
 
         }
 
@@ -114,7 +126,11 @@ namespace Gestion_de_Absence
         {
             Groupe g = new Groupe();
             g.ShowDialog();
-            Application.Restart();
+            txtidStagiaire.DataBindings.Clear();
+            txtName.DataBindings.Clear();
+            cbGroupe.DataBindings.Clear();
+            txtAnneScholaire.DataBindings.Clear();
+            Inscription_Load(null, null);
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)

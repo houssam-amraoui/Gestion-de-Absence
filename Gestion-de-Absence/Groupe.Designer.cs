@@ -156,21 +156,21 @@
             // 
             // txtIdgroupe
             // 
+            this.txtIdgroupe.Enabled = false;
             this.txtIdgroupe.Location = new System.Drawing.Point(114, 23);
             this.txtIdgroupe.Name = "txtIdgroupe";
             this.txtIdgroupe.Size = new System.Drawing.Size(193, 22);
             this.txtIdgroupe.TabIndex = 5;
-            this.txtIdgroupe.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Enabled = false;
             this.label3.Location = new System.Drawing.Point(13, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "IdGroupe : ";
-            this.label3.Visible = false;
             // 
             // pnGModification
             // 
