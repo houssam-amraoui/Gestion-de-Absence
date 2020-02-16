@@ -39,7 +39,7 @@ nameusers varchar(20),
 matiere varchar(50),
 login varchar(50),
 password varchar(50),
-preriorite int)
+priorite int)
 
 create table absence(
 idInscription int,

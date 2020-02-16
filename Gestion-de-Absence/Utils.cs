@@ -11,7 +11,7 @@ namespace Gestion_de_Absence
      class Utils
     {
        static List<Jour> jours = new List<Jour>();
-        static string[] tabjour = { "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" };
+       public static string[] tabjour = { "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi" };
 
         public static void rempli_liste(ComboBox l)
         {

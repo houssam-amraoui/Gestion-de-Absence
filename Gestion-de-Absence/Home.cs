@@ -20,6 +20,8 @@ namespace Gestion_de_Absence
             }
             cbGroupe.SelectedIndex = 0;
 
+            foreach (String ss in Utils.tabjour)
+                cb2.Items.Add(ss);
 
             
 

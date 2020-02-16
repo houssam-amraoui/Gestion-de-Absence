@@ -43,6 +43,8 @@
             this.btnPrevious = new System.Windows.Forms.Button();
             this.empt = new System.Windows.Forms.Button();
             this.panelabs = new System.Windows.Forms.Panel();
+            this.cb2 = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmploiGroupe)).BeginInit();
             this.panelabs.SuspendLayout();
             this.SuspendLayout();
@@ -179,16 +181,39 @@
             this.panelabs.Controls.Add(this.btnNext);
             this.panelabs.Controls.Add(this.lsAbsence);
             this.panelabs.Controls.Add(this.lsPresence);
-            this.panelabs.Location = new System.Drawing.Point(21, 279);
+            this.panelabs.Location = new System.Drawing.Point(21, 330);
             this.panelabs.Name = "panelabs";
             this.panelabs.Size = new System.Drawing.Size(688, 301);
             this.panelabs.TabIndex = 6;
+            // 
+            // cb2
+            // 
+            this.cb2.FormattingEnabled = true;
+            this.cb2.Items.AddRange(new object[] {
+            "08:30 - 11:00",
+            "11:00 - 13:30",
+            "13:30 - 16:00",
+            "16:00 - 18:30"});
+            this.cb2.Location = new System.Drawing.Point(382, 274);
+            this.cb2.Name = "cb2";
+            this.cb2.Size = new System.Drawing.Size(121, 21);
+            this.cb2.TabIndex = 7;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(509, 275);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 8;
+            this.dateTimePicker1.Value = new System.DateTime(2020, 2, 13, 11, 43, 17, 0);
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 633);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.cb2);
             this.Controls.Add(this.panelabs);
             this.Controls.Add(this.dgvEmploiGroupe);
             this.Controls.Add(this.label1);
@@ -222,6 +247,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button empt;
         private System.Windows.Forms.Panel panelabs;
+        private System.Windows.Forms.ComboBox cb2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 
