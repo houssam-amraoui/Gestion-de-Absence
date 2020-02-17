@@ -29,13 +29,7 @@ namespace Gestion_de_Absence
                 cbGroupe.Items.Add(ss);
             }
             cbGroupe.SelectedIndex = 0;
-
-            foreach (String ss in Utils.tabjour)
-                cb2.Items.Add(ss);
-
-            
-
-            
+ 
 
         }
         private void btnModifier_Click(object sender, EventArgs e)
