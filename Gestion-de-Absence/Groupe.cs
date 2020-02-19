@@ -14,6 +14,8 @@ namespace Gestion_de_Absence
     {
         BindingSource bs;
         int conteur2 = -1;
+        bool op;
+        string sql;
         public Groupe()
         {
             InitializeComponent();
@@ -31,17 +33,23 @@ namespace Gestion_de_Absence
             bs.AddNew();
             Utils.activecom(false, pnGModification, pnGValidation, pnGNavigation, pnGZoneTexte);
             txtIdgroupe.Text = conteur2 + "";
+            sql = "insert into Groupe (nomgroupe) values('";
+            op = true;
         }
 
         private void btnGModifier_Click(object sender, EventArgs e)
         {
             Utils.activecom(false, pnGModification, pnGValidation, pnGNavigation, pnGZoneTexte);
+            sql = "update Groupe set nomgroupe='";
+            op = false;
         }
 
         private void btnGSupprimer_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Voulez-vous vraimment supprimer ce Groupe ?", "Supprission", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 bs.RemoveCurrent();
+            sql = "delete from Groupe where idgroupe=" + txtIdgroupe.Text + "";
+            BaseDonnee.exec(sql);
         }
 
         private void btnGValider_Click(object sender, EventArgs e)
@@ -52,7 +60,16 @@ namespace Gestion_de_Absence
             {
                 bs.EndEdit();
                 Utils.activecom(true, pnGModification, pnGValidation, pnGNavigation, pnGZoneTexte);
-               conteur2--;
+                if (op == true)
+                {
+                    BaseDonnee.exec(sql + txtGroupe.Text + "')");
+                }
+                else
+                {
+                    BaseDonnee.exec(sql + txtGroupe.Text + "'");
+                }
+
+                conteur2--;
             }
         }
 
@@ -60,12 +77,6 @@ namespace Gestion_de_Absence
         {
             bs.CancelEdit();
             Utils.activecom(true, pnGModification, pnGValidation, pnGNavigation, pnGZoneTexte);
-        }
-
-        private void Groupe_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("voulez-vous enregestrez les Modifiction ?", "Eregestrement", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                BaseDonnee.syncroniser("Groupe");
         }
     }
 }

@@ -13,6 +13,8 @@ namespace Gestion_de_Absence
 {
     public partial class Login : Form
     {
+        string nameuser;
+        int priorite;
         public Login()
         {
             InitializeComponent();
@@ -20,40 +22,33 @@ namespace Gestion_de_Absence
 
         private void btnCnx_Click(object sender, EventArgs e)
         {
-            BaseDonnee.ouvrirConnection();
-            //nameusers and priorite
-            string nameusers = "select nameusers from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'";
-            SqlCommand com2 = new SqlCommand(nameusers, BaseDonnee.connection);
-            int priorite = 0;
-            SqlCommand com3 = new SqlCommand("select priorite from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'", BaseDonnee.connection);
-            SqlDataReader dr2 = com2.ExecuteReader();
-            while (dr2.Read())
-            {
-               nameusers=(string)dr2["nameusers"];
-            }
-            dr2.Close();
-            SqlDataReader dr3 = com3.ExecuteReader();
-            while (dr3.Read())
-            {
-                priorite = (int)dr3["priorite"];
-            }
-            dr3.Close();
-
-            //Login
-            string sql = "select * from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'";
-            SqlCommand com = new SqlCommand(sql, BaseDonnee.connection);
+            BaseDonneeConnecter.ouvrirconnection();
+            SqlCommand com = new SqlCommand("select * from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'", BaseDonneeConnecter.connection);
             SqlDataReader dr = com.ExecuteReader();
             if (dr.HasRows)
             {
                 dr.Close();
-                
-                Home h = new Home(nameusers,priorite);
+                SqlCommand com2 = new SqlCommand("select nameusers from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'", BaseDonneeConnecter.connection);
+                SqlDataReader dr2 = com2.ExecuteReader();
+                while (dr2.Read())
+                {
+                    nameuser = (string)dr2["nameusers"];
+                }
+                dr2.Close();
+                SqlCommand com3 = new SqlCommand("select priorite from users where login ='" + txtLogin.Text + "' and password ='" + txtPassword.Text + "'", BaseDonneeConnecter.connection);
+                SqlDataReader dr3 = com3.ExecuteReader();
+                while (dr3.Read())
+                {
+                    priorite = (int)dr3["priorite"];
+                }
+                dr3.Close();
+                Home h = new Home(nameuser, priorite);
                 h.ShowDialog();
-
             }
             else
             {
-                MessageBox.Show("Login ou le mot de passe sont Incorrect !!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Login ou le mot de passe sont Incorrect !!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dr.Close();
             }
         }
 

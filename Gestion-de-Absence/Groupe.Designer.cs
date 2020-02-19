@@ -204,7 +204,6 @@
             this.Name = "Groupe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Groupe";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Groupe_FormClosing);
             this.Load += new System.EventHandler(this.Groupe_Load);
             this.pnGNavigation.ResumeLayout(false);
             this.pnGNavigation.PerformLayout();

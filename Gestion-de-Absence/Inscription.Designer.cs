@@ -43,11 +43,11 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.pnNavigation = new System.Windows.Forms.Panel();
             this.pnModification = new System.Windows.Forms.Panel();
+            this.btnAjouter = new System.Windows.Forms.Button();
             this.pnValidation = new System.Windows.Forms.Panel();
             this.pnNouveautie = new System.Windows.Forms.Panel();
             this.txtidStagiaire = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAjouter = new System.Windows.Forms.Button();
             this.pnNavigation.SuspendLayout();
             this.pnModification.SuspendLayout();
             this.pnValidation.SuspendLayout();
@@ -156,7 +156,7 @@
             this.btnStagiaire.Name = "btnStagiaire";
             this.btnStagiaire.Size = new System.Drawing.Size(239, 37);
             this.btnStagiaire.TabIndex = 6;
-            this.btnStagiaire.Text = "Nouveau Stagiaire";
+            this.btnStagiaire.Text = "Nouveau/Modifer Stagiaire";
             this.btnStagiaire.UseVisualStyleBackColor = true;
             this.btnStagiaire.Click += new System.EventHandler(this.btnStagiaire_Click);
             // 
@@ -166,7 +166,7 @@
             this.btnGroupe.Name = "btnGroupe";
             this.btnGroupe.Size = new System.Drawing.Size(239, 37);
             this.btnGroupe.TabIndex = 6;
-            this.btnGroupe.Text = "Nouveau Groupe";
+            this.btnGroupe.Text = "Nouveau/Modifier Groupe";
             this.btnGroupe.UseVisualStyleBackColor = true;
             this.btnGroupe.Click += new System.EventHandler(this.btnGroupe_Click);
             // 
@@ -195,6 +195,16 @@
             this.pnModification.Name = "pnModification";
             this.pnModification.Size = new System.Drawing.Size(363, 64);
             this.pnModification.TabIndex = 9;
+            // 
+            // btnAjouter
+            // 
+            this.btnAjouter.Location = new System.Drawing.Point(3, 16);
+            this.btnAjouter.Name = "btnAjouter";
+            this.btnAjouter.Size = new System.Drawing.Size(107, 34);
+            this.btnAjouter.TabIndex = 5;
+            this.btnAjouter.Text = "Ajouter";
+            this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // pnValidation
             // 
@@ -232,16 +242,6 @@
             this.label1.Size = new System.Drawing.Size(75, 17);
             this.label1.TabIndex = 13;
             this.label1.Text = "IdSagiaire:";
-            // 
-            // btnAjouter
-            // 
-            this.btnAjouter.Location = new System.Drawing.Point(3, 16);
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(107, 34);
-            this.btnAjouter.TabIndex = 5;
-            this.btnAjouter.Text = "Ajouter";
-            this.btnAjouter.UseVisualStyleBackColor = true;
-            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // Inscription
             // 
