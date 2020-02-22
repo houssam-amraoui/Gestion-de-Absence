@@ -67,9 +67,9 @@ namespace Gestion_de_Absence
             p4.Enabled = !l;
         }
 
-        public static int getTimeStart() {
+        public static int getTimeStart(DateTime date) {
            // Jour j = jours[getnumjour()];
-            int aa=int.Parse( DateTime.Now.ToString("HHmm"));
+            int aa=int.Parse( date.ToString("HHmm"));
 
             if (aa > 0830 && aa < 1100)
                 return 1;
@@ -82,9 +82,9 @@ namespace Gestion_de_Absence
 
             return 0;
         }
-        public static int getnumjour()
+        public static int getnumjour(DateTime date)
         {
-            DayOfWeek a= DateTime.Now.DayOfWeek;
+            DayOfWeek a= date.DayOfWeek;
             int ss =(int)a;
             return ss;
         }

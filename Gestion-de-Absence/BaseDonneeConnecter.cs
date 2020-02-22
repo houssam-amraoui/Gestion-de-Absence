@@ -133,6 +133,8 @@ namespace Gestion_de_Absence
         {
             ouvrirconnection();
             command.Connection = connection;
+            String aa = "insert into absence (idInscription,idSeance,date) values ((select idInscription from incription i inner join Stagiaire s on s.idstagiaire = i.idstagiaire where s.name= '" + stagiair + "' and i.annee= '" + time.ToString("yyyy") + "'), (select idSeance from Seance se inner join Groupe g on g.idgroupe= se.idgroupe where g.nomgroupe='" + nomgroupe + "' and se.timestart= " + timestart + " and se.numjour=" + numjour + "),'" + time.ToString("yyyy/MM/dd") + "')";
+
             command.CommandText = "insert into absence (idInscription,idSeance,date) values ((select idInscription from incription i inner join Stagiaire s on s.idstagiaire = i.idstagiaire where s.name= '"+stagiair+"' and i.annee= '"+time.ToString("yyyy")+"'), (select idSeance from Seance se inner join Groupe g on g.idgroupe= se.idgroupe where g.nomgroupe='"+nomgroupe+"' and se.timestart= "+timestart+" and se.numjour="+numjour+"),'"+time.ToString("yyyy/MM/dd") +"')";
             command.ExecuteNonQuery();
         }
