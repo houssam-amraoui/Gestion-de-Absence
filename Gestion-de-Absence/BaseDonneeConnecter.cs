@@ -11,7 +11,7 @@ namespace Gestion_de_Absence
 {
     class BaseDonneeConnecter
     {
-        static SqlConnection connection = new SqlConnection();
+        static public SqlConnection connection = new SqlConnection();
         static SqlCommand command = new SqlCommand();
 
         public static void ouvrirconnection()
