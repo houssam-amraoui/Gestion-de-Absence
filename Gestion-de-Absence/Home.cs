@@ -48,7 +48,7 @@ namespace Gestion_de_Absence
             else
             {
                 isjust = false;
-                MessageBox.Show("Cette action est reservie a au d'autre fonction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cette action est reservie au d'autre fonction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
            
         }
@@ -77,9 +77,18 @@ namespace Gestion_de_Absence
 
         private void empt_Click(object sender, EventArgs e)
         {
-            GestionEmploi s = new GestionEmploi();
-            s.ShowDialog();
-            update();
+            if (priorite == 1 || priorite == 0)
+            {
+                isjust = true;
+                GestionEmploi s = new GestionEmploi();
+                s.ShowDialog();
+                update();
+            }
+            else
+            {
+                isjust = false;
+                MessageBox.Show("Cette action est reservie au d'autre fonction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 
@@ -133,8 +142,16 @@ namespace Gestion_de_Absence
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            panel1.Enabled= checkBox1.Checked;
-            cb1.SelectedIndex = 0;
+            if (priorite == 2 || priorite == 0)
+            {
+                panel1.Enabled = checkBox1.Checked;
+                cb1.SelectedIndex = 0;
+            }
+            else
+            {
+
+                MessageBox.Show("Cette action est reservie au d'autre fonction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void ref1_Click(object sender, EventArgs e)
